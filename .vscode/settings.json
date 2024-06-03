@@ -5,6 +5,7 @@
         "conio.h": "c",
         "constantes.h": "c",
         "stdio.h": "c",
-        "merge.h": "c"
+        "merge.h": "c",
+        "vector.h": "c"
     }
 }
