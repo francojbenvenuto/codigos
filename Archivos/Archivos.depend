@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1716482697 source:c:\users\gonza\documents\universidad\topicos_de_programacion\practica\archivos\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	"../TDA_Vector/Vector.h"
+
+1716086371 c:\users\gonza\documents\universidad\topicos_de_programacion\practica\funcionesgenericas\vector.h
+	<stdbool.h>
+	<stddef.h>
+	<string.h>
+
+1711506624 c:\users\gonza\documents\universidad\topicos_de_programacion\practica\fechas\fecha\fecha.h
+	<stdbool.h>
+
+1716482290 c:\users\gonza\documents\universidad\topicos_de_programacion\practica\tda_vector\vector.h
+	<stdbool.h>
+	<stddef.h>
+	<string.h>
+

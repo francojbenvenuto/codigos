@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "cadena.h": "c",
+        "secuenciapalabra.h": "c",
+        "conio.h": "c",
+        "constantes.h": "c",
+        "stdio.h": "c",
+        "merge.h": "c"
+    }
+}

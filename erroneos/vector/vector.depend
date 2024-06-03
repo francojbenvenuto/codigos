@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1716253102 source:c:\codigos\vector\vector.c
+	<stdio.h>
+	<stdlib.h>
+	<memory.h>
+	"vector.h"
+
+1716252292 c:\codigos\vector\vector.h
+	<stdbool.h>
+	<stddef.h>
+
+1716253638 source:c:\codigos\vector\main.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"../fecha/fecha.h"
+	"vector.h"
+
+1716237753 c:\codigos\fecha\fecha.h
+	<stdbool.h>
+

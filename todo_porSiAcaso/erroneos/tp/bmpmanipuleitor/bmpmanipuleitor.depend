@@ -1,0 +1,73 @@
+# depslib dependency file v1.0
+1712571230 source:/home/ezequiel/Progra/BMP/bmpmanipuleitor/main.c
+	<stdio.h>
+	"funciones_estudiante.h"
+	"funciones_docente.h"
+	"constantes.h"
+
+1712621035 /home/ezequiel/Progra/BMP/bmpmanipuleitor/funciones_docente.h
+	"estructuras.h"
+
+1712621994 source:/home/ezequiel/Progra/BMP/bmpmanipuleitor/funciones_docente.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"estructuras.h"
+	"constantes.h"
+	"funciones_docente.h"
+
+1712539850 source:/home/ezequiel/Progra/BMP/bmpmanipuleitor/funciones_estudiante.c
+
+1712539559 /home/ezequiel/Progra/BMP/bmpmanipuleitor/funciones_estudiante.h
+
+1712591837 /home/ezequiel/Progra/BMP/bmpmanipuleitor/estructuras.h
+
+1712541473 /home/ezequiel/Progra/BMP/bmpmanipuleitor/constantes.h
+
+1714332819 source:e:\materias\tdp\tp_20241c_lunes-v2\source\main.c
+	<stdio.h>
+	"funciones_estudiante.h"
+	"constantes.h"
+
+1714432186 e:\materias\tdp\tp_20241c_lunes-v2\source\funciones_estudiante.h
+	"constantes.h"
+	"estructuras.h"
+
+1714428606 e:\materias\tdp\tp_20241c_lunes-v2\source\constantes.h
+
+1714330414 e:\materias\tdp\tp_20241c_lunes-v2\source\estructuras.h
+
+1714681755 source:e:\materias\tdp\tp_20241c_lunes-v2\source\funciones_estudiante.c
+	"constantes.h"
+	"estructuras.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	<direct.h>
+	<stdbool.h>
+
+1714950620 source:c:\codigos\tp\bmpmanipuleitor\funciones_estudiante.c
+	"constantes.h"
+	"estructuras.h"
+	"funciones_estudiante.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	<direct.h>
+	<stdbool.h>
+
+1714950624 c:\codigos\tp\bmpmanipuleitor\constantes.h
+
+1714950623 c:\codigos\tp\bmpmanipuleitor\estructuras.h
+
+1714682747 source:c:\codigos\tp\bmpmanipuleitor\main.c
+	<stdio.h>
+	"funciones_estudiante.h"
+	"constantes.h"
+
+1714950622 c:\codigos\tp\bmpmanipuleitor\funciones_estudiante.h
+	"constantes.h"
+	"estructuras.h"
+

@@ -1,0 +1,52 @@
+# depslib dependency file v1.0
+1716086592 source:c:\users\gonza\documents\universidad\topicos_de_programacion\practica\funcionesgenericas\main.c
+	<stdio.h>
+	<stdlib.h>
+	"../Fechas/Fecha/Fecha.h"
+	"Vector.h"
+
+1716086489 source:c:\users\gonza\documents\universidad\topicos_de_programacion\practica\funcionesgenericas\vector.c
+	<stdio.h>
+	<stdlib.h>
+	<memory.h>
+	"Vector.h"
+
+1716086371 c:\users\gonza\documents\universidad\topicos_de_programacion\practica\funcionesgenericas\vector.h
+	<stdbool.h>
+	<stddef.h>
+	<string.h>
+
+1711506624 c:\users\gonza\documents\universidad\topicos_de_programacion\practica\fechas\fecha\fecha.h
+	<stdbool.h>
+
+1716086489 source:c:\users\gonza\documents\universidad\topicos_de_programacion\practica\tda_vector\vector.c
+	<stdio.h>
+	<stdlib.h>
+	<memory.h>
+	"Vector.h"
+
+1716086371 c:\users\gonza\documents\universidad\topicos_de_programacion\practica\tda_vector\vector.h
+	<stdbool.h>
+	<stddef.h>
+	<string.h>
+
+1716482361 source:c:\codigos\tda_vector\vector.c
+	<stdio.h>
+	<stdlib.h>
+	<memory.h>
+	"Vector.h"
+
+1716482290 c:\codigos\tda_vector\vector.h
+	<stdbool.h>
+	<stddef.h>
+	<string.h>
+
+1717445737 source:c:\codigos\tda_vector\main.c
+	<stdio.h>
+	<stdlib.h>
+	"../Fecha/Fecha.h"
+	"Vector.h"
+
+1716237754 c:\codigos\fecha\fecha.h
+	<stdbool.h>
+
