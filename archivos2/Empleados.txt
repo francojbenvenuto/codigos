@@ -1,0 +1,8 @@
+10|Juan Perez|M|1/1/2018|150000.00
+5|Gabriel Gutierrez|M|2/2/2018|140000.00
+9|Arnaldo Arevalo|M|3/3/2018|150000.00
+2|Brian Barroso|M|4/4/2018|170000.00
+3|Carlos Casas|M|5/5/2018|130000.00
+1|Daniela Dado|F|6/6/2018|190000.00
+8|Esteban Estevez|M|9/9/2018|110000.00
+4|Fernanda Fernandez|F|10/10/2018|150000.00

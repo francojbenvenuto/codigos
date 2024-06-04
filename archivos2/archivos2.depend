@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1717465158 source:c:\codigos\archivos2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"../fecha/fecha.h"
+
+1717452963 c:\codigos\fecha\fecha.h
+	<stdbool.h>
+

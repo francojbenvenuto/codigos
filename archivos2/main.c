@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
 #include "../fecha/fecha.h"
 #define TODO_OK 0
 #define ERR_ARCH 200
 #define ERR_MEM 100
+#define ERR_LINEA_LARGA 300
 
 #define TAM_LINEA 501
 #define TAM_NOMBRE 21
@@ -28,17 +31,21 @@ typedef struct
 Empleado;
 
 typedef void (*BinATxt)(const void* reg, FILE* archTxt);
+typedef int (*TxtABin)(const char* linea, void* reg);
 
+int mostrarEmpleados(const char* nomArch);
 int generarEmpleados(const char* nomArchEmpleados);
 int convertirBinATxt(const char* nomArchEnt, const char* nomArchSal,size_t tamReg, BinATxt binATxt);
 void empleadoBinATxtV(const void* reg, FILE* archTxt);
 void empleadoBinATxtF(const void* reg, FILE* archTxt);
 
-//int convertirTxtABin( const char* nomArchEnt, const char* nomArchSal,size_t tamReg, TxtABin txtABin);
+int convertirTxtABin( const char* nomArchEnt, const char* nomArchSal,size_t tamReg, TxtABin txtABin);
+int empleadoTxtABinV(const char* linea, void* reg);         //estos son punteros a funciones
+int empleadoTxtABinF(const char* linea, void* reg);
 
 // ConversoTxtBin Empleados.dat B Empleados.txt V
 
-// ConversoTxtBin Empleados.txt V Empleados.dat B
+// ConversoTxtBin EmpleadosV.txt V EmpleadosB.dat B
 
 int main(int argc, char* argv[])
 {
@@ -49,16 +56,18 @@ int main(int argc, char* argv[])
     char tipoArchEnt = *argv[ARG_TIPO_ARCH_ENT];
     char tipoArchSal = *argv[ARG_TIPO_ARCH_SAL];
 
+    generarEmpleados("empleados.dat");
     switch (tipoArchEnt)
     {
     case 'B':
         ret = convertirBinATxt(argv[ARG_ARCH_ENT],argv[ARG_ARCH_SAL],sizeof(Empleado), tipoArchSal =='V'? empleadoBinATxtV : empleadoBinATxtF);
         break;
 
- //   case 'V':
-  //  case 'F':
-  //      ret = convertirTxtABin(argv[ARG_ARCH_ENT],argv[ARG_ARCH_SAL],sizeof(Empleado),tipoArchEnt == 'V'? empleadoTxtVABin : empleadoTxtFABin);
-  //      break;
+    case 'V':
+    case 'F':
+       ret = convertirTxtABin(argv[ARG_ARCH_ENT],argv[ARG_ARCH_SAL],sizeof(Empleado),tipoArchEnt == 'V'? empleadoTxtABinV : empleadoTxtABinF);
+        mostrarEmpleados("EmpleadosB.dat");
+        break;
 
     default:
         puts("tipo de archivo de entrada incorrecto");
@@ -139,7 +148,7 @@ void empleadoBinATxtV(const void* reg, FILE* archTxt)
     fprintf(                                                //fprintf es para imprimir en texto para archivos
         archTxt, "%d|%s|%c|%d/%d/%d|%.2f\n",
         empleado->legajo, empleado->nombre,
-        empleado->sexo, empleado->FechaIng,
+        empleado->sexo, empleado->FechaIng.dia,empleado->FechaIng.mes,empleado->FechaIng.anio,
         empleado->sueldo
       );
 }
@@ -157,9 +166,6 @@ void empleadoBinATxtF(const void* reg, FILE* archTxt)
 }
 
 
-
-
-/*
 
 int convertirTxtABin( const char* nomArchEnt, const char* nomArchSal,size_t tamReg, TxtABin txtABin)
 {
@@ -179,15 +185,17 @@ int convertirTxtABin( const char* nomArchEnt, const char* nomArchSal,size_t tamR
         fclose(archEntTxt);
         return ERR_ARCH;
     }
-
+    int ret = TODO_OK;
     char linea[TAM_LINEA];
 
     fgets(linea, TAM_LINEA, archEntTxt);        // lee la linea hasta un enter o que termine el tamaño linea -1
-    while (!feof(archEntTxt))
+    while (!feof(archEntTxt) && ret != TODO_OK)
     {
-        txtABin(linea,reg);
-        fwrite(reg, tamReg,1,archSalBin);
-        fgets(linea, TAM_LINEA, archEntTxt); 
+        ret = txtABin(linea,reg);
+        if (ret == TODO_OK)  
+            fwrite(reg, tamReg,1,archSalBin);
+
+        fgets(linea, TAM_LINEA, archEntTxt); // no usamos fscanf por posibles problemas con comas y puntos que no reconoce
     }
 
     free(reg);
@@ -197,5 +205,67 @@ int convertirTxtABin( const char* nomArchEnt, const char* nomArchSal,size_t tamR
     return TODO_OK;
 }
 
+// que estamos haciendo?, estamos leyendo de atras a adelante de cada linea empleado, por lo que empezamos identificando los cortes "|"
+// pero primero tenemos que buscar el nulo "\n" para setearnos en el final de cada linea
+int empleadoTxtABinV(const char* linea, void* reg)      
+{
+    Empleado* empleados = reg;
 
-*/
+    char* act = strchr(linea,'\n');
+
+    if(!act)
+        return ERR_LINEA_LARGA;
+
+    *act = '\0';
+    act = strchr(linea,'|');
+    sscanf(act +1, "%f", &empleados->sueldo);   // es mas uno porque estamos en el | y el anterior(de atras a adelante) es el dato
+
+    *act = '\0';
+    act = strchr(linea,'|');
+    sscanf(act +1, "%d/%d/%d", &empleados->FechaIng.dia,&empleados->FechaIng.mes,&empleados->FechaIng.anio);
+
+    *act = '\0';
+    act = strchr(linea,'|');
+    empleados->sexo = *act+1;
+
+    *act = '\0';
+    act = strchr(linea,'|');
+    strncpy(empleados->nombre,act +1, TAM_NOMBRE -1); 
+    // como el fgets pero copia hasta el caracter nulo o el limite puesto por nosotros (este es strNcopy, no el otro)
+    // -1 porque tenemos que reservar para ingresar el caracter nulo (el fgets lo pone automaticamente el caracter nulo)
+    *(empleados->nombre + TAM_NOMBRE -1 )= '\0';
+
+    *act = '\0';
+    sscanf(linea, "%d", &empleados->legajo);
+
+// faltan las varidaciones, (el sexo f o m, sueldo siempre positivo, que tenga "," y no ".")
+    return TODO_OK;
+}
+
+int empleadoTxtABinF(const char* linea, void* reg)
+{
+    return TODO_OK;
+    // incompleto, ni lo encaro el profe
+}
+
+
+int mostrarEmpleados(const char* nomArch)
+{
+    FILE* arch = fopen(nomArch, "rb");
+
+    if(!arch)
+        return ERR_ARCH;
+
+    Empleado empl;
+
+    fread(&empl, sizeof(Empleado), 1, arch);
+    while(!feof(arch))
+    {
+        printf("Legajo: %03d, Nombre: %-20s, Sueldo: %9.2f\n", empl.legajo, empl.nombre, empl.sueldo);
+        fread(&empl, sizeof(Empleado), 1, arch);
+    }
+
+    fclose(arch);
+
+    return TODO_OK;
+}
