@@ -154,9 +154,9 @@ void empleadoBinATxtV(const void* reg, FILE* archTxt)
 }
 
 void empleadoBinATxtF(const void* reg, FILE* archTxt)
-{    
+{
     const Empleado* empleado = reg;
-    fprintf(                                                
+    fprintf(
         archTxt, "%08d%-20s%c%02d%02d%04d%9.2f\n",
         empleado->legajo, empleado->nombre,
         empleado->sexo, empleado->FechaIng.dia,empleado->FechaIng.mes,empleado->FechaIng.anio,
@@ -192,7 +192,7 @@ int convertirTxtABin( const char* nomArchEnt, const char* nomArchSal,size_t tamR
     while (!feof(archEntTxt) && ret != TODO_OK)
     {
         ret = txtABin(linea,reg);
-        if (ret == TODO_OK)  
+        if (ret == TODO_OK)
             fwrite(reg, tamReg,1,archSalBin);
 
         fgets(linea, TAM_LINEA, archEntTxt); // no usamos fscanf por posibles problemas con comas y puntos que no reconoce
@@ -207,7 +207,7 @@ int convertirTxtABin( const char* nomArchEnt, const char* nomArchSal,size_t tamR
 
 // que estamos haciendo?, estamos leyendo de atras a adelante de cada linea empleado, por lo que empezamos identificando los cortes "|"
 // pero primero tenemos que buscar el nulo "\n" para setearnos en el final de cada linea
-int empleadoTxtABinV(const char* linea, void* reg)      
+int empleadoTxtABinV(const char* linea, void* reg)
 {
     Empleado* empleados = reg;
 
@@ -230,7 +230,7 @@ int empleadoTxtABinV(const char* linea, void* reg)
 
     *act = '\0';
     act = strchr(linea,'|');
-    strncpy(empleados->nombre,act +1, TAM_NOMBRE -1); 
+    strncpy(empleados->nombre,act +1, TAM_NOMBRE -1);
     // como el fgets pero copia hasta el caracter nulo o el limite puesto por nosotros (este es strNcopy, no el otro)
     // -1 porque tenemos que reservar para ingresar el caracter nulo (el fgets lo pone automaticamente el caracter nulo)
     *(empleados->nombre + TAM_NOMBRE -1 )= '\0';
