@@ -10,6 +10,8 @@
 
 #define TAM_LINEA 501
 #define TAM_NOMBRE 21
+#define TAM_SUELDO 11
+#define TAM_FECHA   8
 #define CANT_EMPL 8
 #define ARG_ARCH_ENT 1
 #define ARG_TIPO_ARCH_ENT 2
@@ -66,7 +68,7 @@ int main(int argc, char* argv[])
     case 'V':
     case 'F':
        ret = convertirTxtABin(argv[ARG_ARCH_ENT],argv[ARG_ARCH_SAL],sizeof(Empleado),tipoArchEnt == 'V'? empleadoTxtABinV : empleadoTxtABinF);
-        mostrarEmpleados("EmpleadosB.dat");
+        mostrarEmpleados(argv[ARG_ARCH_ENT]);
         break;
 
     default:
@@ -230,10 +232,10 @@ int empleadoTxtABinV(const char* linea, void* reg)
 
     *act = '\0';
     act = strchr(linea,'|');
-    strncpy(empleados->nombre,act +1, TAM_NOMBRE -1);
+    strncpy(empleados->nombre,act +1, TAM_NOMBRE /* -1 */);
     // como el fgets pero copia hasta el caracter nulo o el limite puesto por nosotros (este es strNcopy, no el otro)
     // -1 porque tenemos que reservar para ingresar el caracter nulo (el fgets lo pone automaticamente el caracter nulo)
-    *(empleados->nombre + TAM_NOMBRE -1 )= '\0';
+    *(empleados->nombre + TAM_NOMBRE /*-1*/ )= '\0';
 
     *act = '\0';
     sscanf(linea, "%d", &empleados->legajo);
@@ -244,8 +246,33 @@ int empleadoTxtABinV(const char* linea, void* reg)
 
 int empleadoTxtABinF(const char* linea, void* reg)
 {
-    return TODO_OK;
-    // incompleto, ni lo encaro el profe
+  Empleado* empl = (Empleado*)reg;
+
+	char* act = strchr(linea, '\n');
+
+	if(!act)
+	{
+		return ERR_LINEA_LARGA;
+	}
+
+	*act = '\0';
+	act -= TAM_SUELDO;
+	sscanf(act, "%f", &empl->sueldo);
+
+	*act = '\0';
+	act -= TAM_FECHA;
+	sscanf(act, "%02d%02d%04d", &empl->FechaIng.dia, &empl->FechaIng.mes, &empl->FechaIng.anio);
+
+	*act = '\0';
+	act--;
+	empl->sexo = *act;
+
+	*act = '\0';
+	act -= TAM_NOMBRE;
+	// RTRIM
+	strncpy(empl->nombre, act, TAM_NOMBRE);
+
+	return TODO_OK;
 }
 
 
@@ -259,9 +286,11 @@ int mostrarEmpleados(const char* nomArch)
     Empleado empl;
 
     fread(&empl, sizeof(Empleado), 1, arch);
+
     while(!feof(arch))
     {
-        printf("Legajo: %03d, Nombre: %-20s, Sueldo: %9.2f\n", empl.legajo, empl.nombre, empl.sueldo);
+        printf("%d\t%s\t%c\t%d/%d/%d\t%.2f\n", empl.legajo, empl.nombre, empl.sexo, empl.FechaIng.dia
+                                            , empl.FechaIng.mes, empl.FechaIng.anio, empl.sueldo);
         fread(&empl, sizeof(Empleado), 1, arch);
     }
 
