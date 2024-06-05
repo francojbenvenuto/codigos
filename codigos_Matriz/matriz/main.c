@@ -43,21 +43,3 @@ int main()
     return 0;
 }
 
-void inicializarMatriz(int orden, int** mat) {
-    int x = 1;
-    for (int i = 0; i < orden; i++) {
-      for (int j = 0; j < orden; j++, x++) {
-          mat[i][j] = x;
-      }
-    }
-}
-
-void imprimirMatriz(int orden, int** mat) {
-    for (int i = 0; i < orden; i++) {
-      for (int j = 0; j < orden; j++) {
-          printf("%d ", mat[i][j]);
-      }
-      putchar('\n');
-    }
-}
-

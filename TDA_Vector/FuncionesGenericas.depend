@@ -30,18 +30,18 @@
 	<stddef.h>
 	<string.h>
 
-1716482361 source:c:\codigos\tda_vector\vector.c
+1717617217 source:c:\codigos\tda_vector\vector.c
 	<stdio.h>
 	<stdlib.h>
 	<memory.h>
 	"Vector.h"
 
-1716482290 c:\codigos\tda_vector\vector.h
+1717449080 c:\codigos\tda_vector\vector.h
 	<stdbool.h>
 	<stddef.h>
 	<string.h>
 
-1717445737 source:c:\codigos\tda_vector\main.c
+1717449077 source:c:\codigos\tda_vector\main.c
 	<stdio.h>
 	<stdlib.h>
 	"../Fecha/Fecha.h"

@@ -10,5 +10,7 @@ int matrizSumarDp(int orden, int** mat);
 int matrizSumarDs(int orden, int** mat);
 int matrizSumarTriangSupDs(int orden, int** mat);
 int matrizSumarTriangSupDsMia(int orden, int** mat);
+void imprimirMatriz(int orden, int** mat);
+void inicializarMatriz(int orden, int** mat);
 
 #endif // MATRIZ_H
