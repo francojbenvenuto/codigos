@@ -2,6 +2,8 @@
 #define FECHA_H
 
 #include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 typedef struct 
 {
@@ -18,9 +20,9 @@ bool esBisiesto(int anio);
 void mostrarFecha(const Fecha* fecha);
 
 Fecha sumarDiasAFecha(const Fecha* fecha, int dias);
-// void sumarDiasAFecha(const Fecha* fecha, int dias, Fecha* fSuma);   modifica la original
+void sumarDiasAFechaMostrar(const Fecha* fecha, int dias, Fecha* fSuma);   
 Fecha restarDiasAFecha(const Fecha* fecha, int dias);
-// void restarDiasAFecha(const Fecha* fecha, int dias, Fecha fSuma);
+void restarDiasAFechaMostrar(const Fecha* fecha, int dias, Fecha fSuma);
 
 int difEntreFechas( const Fecha* fecha1, const Fecha* fecha2);
 int diaDeLaSemana(const Fecha* fecha);

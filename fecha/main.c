@@ -1,8 +1,11 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "fecha.h"
 
 int main()
 {
-    printf("Hello world!\n");
+
+    Fecha fechaHoy = ingresarFecha();
+
+    mostrarFecha(&fechaHoy);
+
     return 0;
 }
