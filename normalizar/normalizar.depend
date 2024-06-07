@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1717744192 source:c:\codigos\normalizar\cadena.c
+	"cadena.h"
+	"SecuenciaPalabra.h"
+
+1717746403 c:\codigos\normalizar\secuenciapalabra.h
+	<stdbool.h>
+	<stdio.h>
+
+1717746235 source:c:\codigos\normalizar\secuenciapalabra.c
+	"SecuenciaPalabra.h"
+	"Cadena.h"
+
+1717740346 c:\codigos\normalizar\cadena.h
+
+1717746405 source:c:\codigos\normalizar\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Cadena.h"
+	"secuenciaPalabra.h"
+

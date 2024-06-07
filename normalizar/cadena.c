@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "cadena.h"
 #include "SecuenciaPalabra.h"
 
 char* normalizarCadena (char* cadDest, const char* cadOrig)
