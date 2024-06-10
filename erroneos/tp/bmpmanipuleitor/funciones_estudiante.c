@@ -177,12 +177,12 @@ void getData(bmpInfo *ptr_info ,pixel *ptr_pic, int nPixels, char* archivo)
     fclose(fp);
 }
 
-void** matrizCrear(int filas, int columnas) 
+void** matrizCrear(int filas, int columnas)
 {
     void** mat = malloc(sizeof(void*) * filas);
 
     if (!mat)
-    {   
+    {
         puts("NO se pudo resertvar memoria");
         exit(1);
     }
@@ -192,10 +192,10 @@ void** matrizCrear(int filas, int columnas)
         *i = malloc(sizeof(pixel) * columnas);
 
         if (!*i)
-        {   
+        {
         puts("NO se pudo resertvar memoria");
         exit(1);
-        }   
+        }
     }
 
     return mat;
@@ -237,6 +237,9 @@ void llenarMatriz(bmpInfo *ptr_info ,pixel** matrizPixel, int nPixels,char* arch
         }
     }
     fclose(fp);
+
+    printf("\n los primeros pixeles son: \n\t %c   %c    %c",matrizPixel[0][0].b,matrizPixel[0][0].g,matrizPixel[0][0].r);
+
 }
 
 void grayScale(pixel* ptr_pic, bmpInfo* ptr_info, unsigned int nP,unsigned char* nuevoEncab)
