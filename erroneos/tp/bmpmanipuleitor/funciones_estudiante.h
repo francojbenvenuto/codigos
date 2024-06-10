@@ -45,9 +45,13 @@ void getInfo(bmpInfo *ptr, unsigned char* getCabezado, char*);
 
 void getData(bmpInfo *ptr_info ,pixel *ptr_pic, int nPixels,char*);
 
-void** matrizCrear(int filas, int columnas);
+//void** matrizCrear(int filas, int columnas);
 
-void llenarMatriz(bmpInfo *ptr_info ,pixel** matrizPixel , int nPixels,char*);
+//void llenarMatriz(bmpInfo *ptr_info ,pixel** matrizPixel , int nPixels,char*);
+
+//void copiaMatriz(pixel** matriz, bmpInfo* ptr_info, unsigned int nP,unsigned char* nuevoEncab);
+
+//void matrizDestruir(void** mat, int filas); 
 
 void grayScale(pixel* ptr_pic, bmpInfo* ptr_info, unsigned int nP,unsigned char* nuevoEncab);
 
@@ -70,5 +74,7 @@ void negative(pixel* ptr_pic, bmpInfo* ptr_info, unsigned int nP,unsigned char* 
 void wildcard(pixel* ptr_pic, bmpInfo* ptr_info, unsigned int nP,unsigned char* nuevoEncab);
 
 void execute(pixel* ptr_pic, bmpInfo* ptr_info, unsigned int nP,unsigned char* nuevoEncab,int argc, char* argv[]);
+
+void pixelar(pixel* ptr_pic, bmpInfo* ptr_info, unsigned int nP,unsigned char* nuevoEncab);
 
 #endif // FUNCIONES_ESTUDIANTE_H_INCLUDED

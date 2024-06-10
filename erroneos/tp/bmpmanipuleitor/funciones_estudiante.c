@@ -64,17 +64,20 @@ int solucion(int argc, char* argv[])
 
     pixel pic[cant_pixels];                                         // VECTOR DE PIXELES
 
-    pixel **matriPixel = (pixel**)matrizCrear(info_pic.alto, info_pic.ancho);
-    //pixel matriPixel [info_pic.alto][info_pic.ancho];
+    //pixel **matriPixel = (pixel**)matrizCrear(info_pic.alto, info_pic.ancho);
+
 
     getData(&info_pic ,pic ,cant_pixels,archivo);                   // LLENAMOS EL VECTOR DE PIXELES
 
-    llenarMatriz(&info_pic ,matriPixel ,cant_pixels,archivo);              // LLENAMOS la matriz DE PIXELES
+    //llenarMatriz(&info_pic ,matriPixel ,cant_pixels,archivo);     // LLENAMOS la matriz DE PIXELES
 
     mkdir("Copias");                                                // CREAMOS LA CARPETA
 
+    //copiaMatriz(matriPixel,&info_pic,cant_pixels,encabezado);
+
     execute(pic,&info_pic,cant_pixels,encabezado,argc,argv);        //BUSCAMOS Y EJECUTAMOSS LAS FUNCIONES SOLICITADAS
 
+    //matrizDestruir (matriPixel,info_pic.alto);
     return TODO_OK;
 }
 
@@ -176,10 +179,10 @@ void getData(bmpInfo *ptr_info ,pixel *ptr_pic, int nPixels, char* archivo)
     }
     fclose(fp);
 }
-
+/*
 void** matrizCrear(int filas, int columnas)
 {
-    void** mat = malloc(sizeof(void*) * filas);
+    void** mat = (void**)malloc(sizeof(void*) * filas);
 
     if (!mat)
     {
@@ -197,7 +200,7 @@ void** matrizCrear(int filas, int columnas)
         exit(1);
         }
     }
-
+    puts("TODO OK");
     return mat;
 }
 
@@ -223,13 +226,13 @@ void llenarMatriz(bmpInfo *ptr_info ,pixel** matrizPixel, int nPixels,char* arch
     {
         fseek(fp,ptr_info->inicioImg,SEEK_SET);
 
-        while (ptr_info->alto >= flagFinal)
+        while (ptr_info->alto > flagFinal)
         {
             while (ptr_info->ancho > flagFilas)
             {
-                fread(( matrizPixel[flagFinal][flagFilas].b ),sizeof(char),1,fp);
-                fread(( matrizPixel[flagFinal][flagFilas].g ),sizeof(char),1,fp);
-                fread(( matrizPixel[flagFinal][flagFilas].r ),sizeof(char),1,fp);
+                fread((&matrizPixel[flagFinal][flagFilas].b ),sizeof(char),1,fp);
+                fread((&matrizPixel[flagFinal][flagFilas].g ),sizeof(char),1,fp);
+                fread((&matrizPixel[flagFinal][flagFilas].r ),sizeof(char),1,fp);
                 flagFilas ++;
             }
             flagFinal ++;
@@ -237,11 +240,55 @@ void llenarMatriz(bmpInfo *ptr_info ,pixel** matrizPixel, int nPixels,char* arch
         }
     }
     fclose(fp);
+}
 
-    printf("\n los primeros pixeles son: \n\t %c   %c    %c",matrizPixel[0][0].b,matrizPixel[0][0].g,matrizPixel[0][0].r);
+void copiaMatriz(pixel** matriz, bmpInfo* ptr_info, unsigned int nP,unsigned char* nuevoEncab)
+{
+    FILE* fp;
+    fp=fopen("Copias/copiaMatriz.bmp","wb");
+    unsigned int i=0 , h = 0;
+    unsigned char nulo = 0;
+    int offset = 0, flagSalto = 0;
+    unsigned char r,g,b;
+    int flagFinal,flagFilas ;
+
+
+    if ((ptr_info->ancho*3)%4 != 0)
+    {
+        offset = 4 - ((ptr_info->ancho*3)%4) ;
+    }
+    fwrite(nuevoEncab,ptr_info->inicioImg,1,fp);
+    fseek(fp,ptr_info->inicioImg,SEEK_SET);
+
+//_______________________________________CODIGO ESPECIFICO___________________________________________
+    while (ptr_info->alto > flagFinal)
+    {
+        while (ptr_info->ancho > flagFilas)
+        {
+            fwrite(&matriz[flagFinal][flagFilas].b,sizeof(char),1,fp);
+            fwrite(&matriz[flagFinal][flagFilas].g,sizeof(char),1,fp);
+            fwrite(&matriz[flagFinal][flagFilas].r,sizeof(char),1,fp);
+
+            flagFilas ++;
+        }
+
+        flagFinal ++;
+        flagFilas = 0;
+
+        while (flagSalto != offset && i< nP )
+        {
+        fwrite(&nulo,sizeof(unsigned char),1,fp);
+        flagSalto ++;
+        }
+        flagSalto = 0;
+    }
+//___________________________________________FINAL____________________________________________________
+    fwrite(&nulo,sizeof(unsigned char),1,fp);
+    fclose(fp);
 
 }
 
+*/
 void grayScale(pixel* ptr_pic, bmpInfo* ptr_info, unsigned int nP,unsigned char* nuevoEncab)
 {
     FILE* fp;
@@ -781,7 +828,7 @@ void negative(pixel* ptr_pic, bmpInfo* ptr_info, unsigned int nP,unsigned char* 
 
 void wildcard(pixel* ptr_pic, bmpInfo* ptr_info, unsigned int nP,unsigned char* nuevoEncab)             //FUNCION COMODIN
 {
-FILE* fp;
+    FILE* fp;
     fp=fopen("Copias/estudiante_Comodin.bmp","wb");
     unsigned int i=0 , h = 0;
     unsigned char nulo = 0;
@@ -818,6 +865,78 @@ FILE* fp;
     fwrite(&nulo,sizeof(unsigned char),1,fp);
     fclose(fp);
 }
+
+
+void pixelar(pixel* ptr_pic, bmpInfo* ptr_info, unsigned int nP,unsigned char* nuevoEncab)
+{
+    FILE* fp;
+    fp=fopen("Copias/Pixelar.bmp","wb");
+    unsigned int i=0 , h = 0,iPrimera,iUltima;
+    unsigned char nulo = 0;
+    int offset = 0, flagSalto = 0, flagPixeles = 0;
+    int flag = 0;
+
+    if ((ptr_info->ancho*3)%4 != 0)
+    {
+        offset = 4 - ((ptr_info->ancho*3)%4) ;
+    }
+    fwrite(nuevoEncab,ptr_info->inicioImg,1,fp);
+    fseek(fp,ptr_info->inicioImg,SEEK_SET);
+//_______________________________________CODIGO ESPECIFICO___________________________________________
+    while(flag < ptr_info->alto)
+    {
+        iPrimera = i ;
+        while (h < ptr_info->ancho && i< nP )
+        {
+            fwrite((ptr_pic+(i)),sizeof(pixel),1,fp);
+            fwrite((ptr_pic+(i)),sizeof(pixel),1,fp);
+            i = i + 2;
+            h = + 2;
+            iUltima = iUltima +2;
+        }
+
+       while (flagSalto != offset && i< nP)
+        {
+            fwrite(&nulo,sizeof(unsigned char),1,fp);
+            flagSalto ++;
+        }
+
+        flag ++;
+        h = 0;
+        flagSalto = 0;
+
+        if (flagPixeles % 2 == 0)
+        {
+            i = iPrimera;
+            while (h < ptr_info->ancho && i< nP )
+            {
+                fwrite((ptr_pic+(i)),sizeof(pixel),1,fp);
+                iUltima ++;
+                fwrite((ptr_pic+(i)),sizeof(pixel),1,fp);
+
+                i = i + 2;
+                h = + 2;
+                iUltima ++;
+            }
+
+            while (flagSalto != offset && i< nP)
+            {
+                fwrite(&nulo,sizeof(unsigned char),1,fp);
+                flagSalto ++;
+            }
+
+            flag ++;
+            h = 0;
+            flagSalto = 0;
+            flagPixeles ++;
+        }
+        i = iUltima;
+    }
+//___________________________________________FINAL____________________________________________________
+    fwrite(&nulo,sizeof(unsigned char),1,fp);
+    fclose(fp);
+}
+
 
 void execute(pixel* ptr_pic, bmpInfo* ptr_info, unsigned int nP,unsigned char* nuevoEncab,int argc, char* argv[])   //FUNCION DE SELECCION Y EJECUCION DE LOS ARGUMENTOS ENVIADOS POR CONSOLA
 {
@@ -868,6 +987,11 @@ void execute(pixel* ptr_pic, bmpInfo* ptr_info, unsigned int nP,unsigned char* n
             wildcard(ptr_pic,ptr_info,nP,nuevoEncab);
             chequeo=false;
         }
+
+        if(strcmp(argv[i],"--pixelar")== 0){
+            pixelar(ptr_pic,ptr_info,nP,nuevoEncab);
+            chequeo=false;
+        }
         if(strcmp(argv[i],"--todo")== 0){
             red50(ptr_pic,ptr_info,nP,nuevoEncab);
             negative(ptr_pic,ptr_info,nP,nuevoEncab);
@@ -888,3 +1012,17 @@ void execute(pixel* ptr_pic, bmpInfo* ptr_info, unsigned int nP,unsigned char* n
         chequeo=true;
     }
 }
+
+/*
+void matrizDestruir(void** mat, int filas)
+{
+    void** ult = mat + filas - 1;
+
+    for(void** i = mat; i <= ult; i++) {
+        free(*i);
+    }
+
+    free(mat);
+}
+
+*/

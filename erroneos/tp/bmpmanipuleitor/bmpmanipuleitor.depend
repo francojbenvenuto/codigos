@@ -76,11 +76,22 @@
 	"funciones_estudiante.h"
 	"constantes.h"
 
-1718045063 c:\codigos\erroneos\tp\bmpmanipuleitor\funciones_estudiante.h
+1718051694 c:\codigos\erroneos\tp\bmpmanipuleitor\funciones_estudiante.h
 	"constantes.h"
 	"estructuras.h"
 
 1714950624 c:\codigos\erroneos\tp\bmpmanipuleitor\constantes.h
 
 1714950623 c:\codigos\erroneos\tp\bmpmanipuleitor\estructuras.h
+
+1718052297 source:c:\codigos\erroneos\tp\bmpmanipuleitor\funciones_estudiante.c
+	"constantes.h"
+	"estructuras.h"
+	"funciones_estudiante.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+	<direct.h>
+	<stdbool.h>
 

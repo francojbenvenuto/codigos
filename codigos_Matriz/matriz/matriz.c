@@ -56,7 +56,7 @@ int esMatrizSimetrica(int orden, int** mat) {
 
 void** matrizCrear(size_t tamElem, int filas, int columnas) 
 {
-    void** mat = malloc(sizeof(void*) * filas);
+    void** mat = (void**)malloc(sizeof(void*) * filas);
 
     if (!mat)
         return NULL;
@@ -94,7 +94,8 @@ void inicializarMatriz(int orden, int** mat) {
     }
 }
 
-void imprimirMatriz(int orden, int** mat) {
+void imprimirMatriz(int orden, int** mat) 
+{
     for (int i = 0; i < orden; i++) {
       for (int j = 0; j < orden; j++) {
           printf("%d ", mat[i][j]);
