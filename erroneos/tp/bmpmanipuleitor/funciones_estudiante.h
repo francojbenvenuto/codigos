@@ -18,8 +18,8 @@ typedef struct
     unsigned int reserved;
     unsigned int inicioImg;
     unsigned int tamCabecera;           
-    unsigned int ancho;                 
-    unsigned int alto;
+    int ancho;                 
+    int alto;
     unsigned char nPlanos[2];
     unsigned char tamPunto[2];
     unsigned int compresion;
@@ -44,6 +44,10 @@ void rotateLeft(pixel* ptr_pic, bmpInfo* ptr_info, unsigned int nP,unsigned char
 void getInfo(bmpInfo *ptr, unsigned char* getCabezado, char*);
 
 void getData(bmpInfo *ptr_info ,pixel *ptr_pic, int nPixels,char*);
+
+void** matrizCrear(int filas, int columnas);
+
+void llenarMatriz(bmpInfo *ptr_info ,pixel** matrizPixel , int nPixels,char*);
 
 void grayScale(pixel* ptr_pic, bmpInfo* ptr_info, unsigned int nP,unsigned char* nuevoEncab);
 

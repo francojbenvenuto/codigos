@@ -54,7 +54,8 @@ int esMatrizSimetrica(int orden, int** mat) {
 //     return 1;
 // }
 
-void** matrizCrear(size_t tamElem, int filas, int columnas) {
+void** matrizCrear(size_t tamElem, int filas, int columnas) 
+{
     void** mat = malloc(sizeof(void*) * filas);
 
     if (!mat)

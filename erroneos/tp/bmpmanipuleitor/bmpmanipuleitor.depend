@@ -71,3 +71,16 @@
 	"constantes.h"
 	"estructuras.h"
 
+1714682747 source:c:\codigos\erroneos\tp\bmpmanipuleitor\main.c
+	<stdio.h>
+	"funciones_estudiante.h"
+	"constantes.h"
+
+1718044719 c:\codigos\erroneos\tp\bmpmanipuleitor\funciones_estudiante.h
+	"constantes.h"
+	"estructuras.h"
+
+1714950624 c:\codigos\erroneos\tp\bmpmanipuleitor\constantes.h
+
+1714950623 c:\codigos\erroneos\tp\bmpmanipuleitor\estructuras.h
+

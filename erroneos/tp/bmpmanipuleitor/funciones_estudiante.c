@@ -64,7 +64,12 @@ int solucion(int argc, char* argv[])
 
     pixel pic[cant_pixels];                                         // VECTOR DE PIXELES
 
+    pixel **matriPixel = (pixel**)matrizCrear(info_pic.alto, info_pic.ancho);
+    //pixel matriPixel [info_pic.alto][info_pic.ancho];
+
     getData(&info_pic ,pic ,cant_pixels,archivo);                   // LLENAMOS EL VECTOR DE PIXELES
+
+    llenarMatriz(&info_pic ,matriPixel ,cant_pixels,archivo);              // LLENAMOS la matriz DE PIXELES
 
     mkdir("Copias");                                                // CREAMOS LA CARPETA
 
@@ -167,6 +172,68 @@ void getData(bmpInfo *ptr_info ,pixel *ptr_pic, int nPixels, char* archivo)
 
                 fseek(fp,offset,SEEK_CUR);
                 flagSalto = 0;
+        }
+    }
+    fclose(fp);
+}
+
+void** matrizCrear(int filas, int columnas) 
+{
+    void** mat = malloc(sizeof(void*) * filas);
+
+    if (!mat)
+    {   
+        puts("NO se pudo resertvar memoria");
+        exit(1);
+    }
+    void** ult = mat + filas - 1;
+
+    for (void** i = mat; i <= ult; i++) {
+        *i = malloc(sizeof(pixel) * columnas);
+
+        if (!*i)
+        {   
+        puts("NO se pudo resertvar memoria");
+        exit(1);
+        }   
+    }
+
+    return mat;
+}
+
+void llenarMatriz(bmpInfo *ptr_info ,pixel** matrizPixel, int nPixels,char* archivo)
+{
+   FILE *fp;
+    fp=fopen(archivo,"rb");
+    int flagFinal=0;
+    int flagFilas;
+    int offset = 0;
+
+// calculamos cuantos son los bits 00 que agrega o quita el formato despues de completar cada fila "ancho"
+    if ((ptr_info->ancho*3)%4 != 0)
+        offset =  4- ((ptr_info->ancho*3)%4) ;
+
+    if(fp==NULL)
+    {
+        printf("\nNO ES POSIBLE LEER EL ARCHIVO\n");
+        getch();
+        exit(1);
+    }
+    else
+    {
+        fseek(fp,ptr_info->inicioImg,SEEK_SET);
+
+        while (ptr_info->alto >= flagFinal)
+        {
+            while (ptr_info->ancho > flagFilas)
+            {
+                fread(( matrizPixel[flagFinal][flagFilas].b ),sizeof(char),1,fp);
+                fread(( matrizPixel[flagFinal][flagFilas].g ),sizeof(char),1,fp);
+                fread(( matrizPixel[flagFinal][flagFilas].r ),sizeof(char),1,fp);
+                flagFilas ++;
+            }
+            flagFinal ++;
+            flagFilas = 0;
         }
     }
     fclose(fp);
