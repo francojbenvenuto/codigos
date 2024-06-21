@@ -1,5 +1,5 @@
 /*
-    Integrantes del grupo. En caso de ser un grupo de dos integrantes, no completar el Ãºltimo campo.
+    Integrantes del grupo. En caso de ser un grupo de dos integrantes, no completar el último campo.
     Si alguno de los integrantes del grupo dejara la materia, completar de todos modos sus datos, aclarando que no entrega.
     -----------------
     Apellido:Battistelli
@@ -99,7 +99,7 @@ int findA(int argc, char* argv[],char* arg)
     return ptr_arch;
 }
 
-int head(char* archivo)                                     // EXTRAEMOS EL TAMAÃ‘O DEL ENCABEZADO
+int head(char* archivo)                                     // EXTRAEMOS EL TAMAÑO DEL ENCABEZADO
 {
     FILE *fp;
     fp=fopen(archivo,"rb");
@@ -936,6 +936,112 @@ void pixelar(pixel* ptr_pic, bmpInfo* ptr_info, unsigned int nP,unsigned char* n
     fwrite(&nulo,sizeof(unsigned char),1,fp);
     fclose(fp);
 }
+void romper(pixel* ptr_pic, bmpInfo* ptr_info, unsigned int nP,unsigned char* nuevoEncab)
+{
+
+    FILE* fp;
+    fp=fopen("Copias/Romper.bmp","wb");
+    unsigned char nulo = 0;
+    int j = 0;
+    int flagAlto = 0, flagAncho = 0;
+
+    fwrite(nuevoEncab,ptr_info->inicioImg,1,fp);
+    fseek(fp,ptr_info->inicioImg,SEEK_SET);
+
+//------------------------------------------matriz------------------------
+    pixel matriz[ptr_info->alto][ptr_info->ancho];
+
+    while (ptr_info->alto > flagAlto)
+    {
+        while (ptr_info->ancho > flagAncho)
+        {
+            matriz[flagAlto][flagAncho] = *(ptr_pic+j);
+            j++;
+            flagAncho ++;
+        }
+        flagAncho = 0;
+        flagAlto ++;
+    }
+
+//------------------------------------------finMatriz---------------------
+//_______________________________________CODIGO ESPECIFICO___________________________________________
+pixel temporal [20][20];
+pixel rotar [20][20];
+pixel mDestino[ptr_info->alto][ptr_info->ancho];
+    int flag1 = 0, flag2= 0,iAncho = 0;
+    int nCuadradosAncho = ptr_info->ancho/20;
+    int nCuadradosAlto = ptr_info->alto/20;
+
+for(int iAlto = 0;iAlto <= nCuadradosAlto;iAlto++ )
+{
+    for(iAncho = 0;iAncho <=nCuadradosAncho;iAncho++ )
+    {
+        // ------------------cargar matriz 20X20
+        for(flag1= 0;flag1 < 20; flag1 ++)
+        {
+            for (flag2 = 0;flag2 < 20;flag2++)
+            {
+                temporal[flag1][flag2].b = matriz[flag1+(20*iAlto) ][flag2+(20*iAncho)].b;
+                temporal[flag1][flag2].g = matriz[flag1+(20*iAlto) ][flag2+(20*iAncho)].g;
+                temporal[flag1][flag2].r = matriz[flag1+(20*iAlto) ][flag2+(20*iAncho)].r;
+            }
+        }
+        // ----------------------rotar
+        flag1 = 0;
+        flag2 = 0;
+
+        while(flag1 < 20)
+        {
+            while (flag2 <20)
+            {
+                rotar[flag1][flag2] = temporal[flag2][20-flag1];
+                flag2 ++;
+            }
+            flag1 ++;
+            flag2 = 0;
+        }
+
+    // ________________volver a cagar
+
+
+        flag1 = 0;
+        flag2 = 0;
+        while(flag1 < 20)
+        {
+            while (flag2 <20)
+            {
+                mDestino[flag1+(20*iAlto)][flag2+(20*iAncho)].b = rotar[flag1][flag2].b;
+                mDestino[flag1+(20*iAlto)][flag2+(20*iAncho)].g = rotar[flag1][flag2].g;
+                mDestino[flag1+(20*iAlto)][flag2+(20*iAncho)].r = rotar[flag1][flag2].r;
+
+                flag2 ++;
+                }
+                flag1 ++;
+                flag2 = 0;
+            }
+    }
+}
+// subir archivo-----------
+
+    flagAncho = 0;
+    flagAlto = 0;
+        while (ptr_info->alto > flagAlto)
+        {
+
+            while(ptr_info->ancho > flagAncho)
+            {
+                fwrite(&mDestino[flagAlto][flagAncho],sizeof(pixel),1,fp);
+                j++;
+                flagAncho ++;
+            }
+            flagAncho = 0;
+            flagAlto ++;
+        }
+//___________________________________________FINAL____________________________________________________
+    fwrite(&nulo,sizeof(unsigned char),1,fp);
+    fclose(fp);
+}
+
 
 
 void execute(pixel* ptr_pic, bmpInfo* ptr_info, unsigned int nP,unsigned char* nuevoEncab,int argc, char* argv[])   //FUNCION DE SELECCION Y EJECUCION DE LOS ARGUMENTOS ENVIADOS POR CONSOLA
@@ -990,6 +1096,10 @@ void execute(pixel* ptr_pic, bmpInfo* ptr_info, unsigned int nP,unsigned char* n
 
         if(strcmp(argv[i],"--pixelar")== 0){
             pixelar(ptr_pic,ptr_info,nP,nuevoEncab);
+            chequeo=false;
+        }
+        if(strcmp(argv[i],"--romper")== 0){
+            romper(ptr_pic,ptr_info,nP,nuevoEncab);
             chequeo=false;
         }
         if(strcmp(argv[i],"--todo")== 0){

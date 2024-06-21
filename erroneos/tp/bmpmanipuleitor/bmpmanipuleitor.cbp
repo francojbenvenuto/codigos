@@ -11,7 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="\codigos\erroneos\tp\bmpmanipuleitor\unlam.bmp  --pixelar" />
+				<Option parameters="\codigos\erroneos\tp\bmpmanipuleitor\unlam.bmp  --romper --todo" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>

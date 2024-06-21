@@ -7,18 +7,18 @@
 typedef struct
 {
     unsigned char b;
-    unsigned char g;        
+    unsigned char g;
     unsigned char r;
 }pixel;
 
-typedef struct 
+typedef struct
 {
     unsigned char formato[2];
     unsigned int tamArch;
     unsigned int reserved;
     unsigned int inicioImg;
-    unsigned int tamCabecera;           
-    int ancho;                 
+    unsigned int tamCabecera;
+    int ancho;
     int alto;
     unsigned char nPlanos[2];
     unsigned char tamPunto[2];
@@ -51,9 +51,11 @@ void getData(bmpInfo *ptr_info ,pixel *ptr_pic, int nPixels,char*);
 
 //void copiaMatriz(pixel** matriz, bmpInfo* ptr_info, unsigned int nP,unsigned char* nuevoEncab);
 
-//void matrizDestruir(void** mat, int filas); 
+//void matrizDestruir(void** mat, int filas);
 
 void grayScale(pixel* ptr_pic, bmpInfo* ptr_info, unsigned int nP,unsigned char* nuevoEncab);
+
+void romper(pixel* ptr_pic, bmpInfo* ptr_info, unsigned int nP,unsigned char* nuevoEncab);
 
 void red50(pixel* ptr_pic, bmpInfo* ptr_info, unsigned int nP,unsigned char* nuevoEncab);
 
