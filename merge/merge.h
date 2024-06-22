@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 #ifndef MERGE_H_INCLUDED
 #define MERGE_H_INCLUDED
@@ -29,6 +30,14 @@ typedef struct
     int cantidad;
 }
 Movimiento;
+
+typedef struct 
+{
+    int ce;
+    Movimiento* vec;
+    int ult;
+}
+Vector;
 
 int generarProductos(const char* nomArchProd);
 int generarMovimientos(const char* nomArchMov);

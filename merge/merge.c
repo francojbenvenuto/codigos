@@ -80,6 +80,29 @@ int generarMovimientos(const char* nomArchMov)
 
 }
 
+bool crearMalloc(Vector* vecMov)
+{
+    vecMov->vec = (Movimiento*) malloc(sizeof(Movimiento));
+    if(! vecMov->vec)
+        return false;
+    
+    vecMov->ce = 1;
+
+    return true;
+}
+
+int llenarVector(Vector* vecMov,FILE* archMov)
+{
+    while(!feof(archMov))
+    {
+        fread(&vecMov->vec,sizeof(Movimiento),1, archMov);
+        vecMov->vec = realloc(vecMov->vec, (vecMov->ce + 1 ) * sizeof(Movimiento) );
+        vecMov->ce ++;
+        if(!vecMov->vec)
+            return ERR_ARCH;
+    }
+    return TODO_OK;
+}
 
 int actualizarProductos(const char* nomArchProd, const char* nomArchMov)
 {
