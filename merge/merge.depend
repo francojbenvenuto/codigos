@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1719007462 source:c:\codigos\merge\main.c
+	<stdio.h>
+	<stdlib.h>
+	"merge.h"
+
+1719014486 c:\codigos\merge\merge.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1719013945 source:c:\codigos\merge\merge.c
+	"merge.h"
+

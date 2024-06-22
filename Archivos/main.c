@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "../TDA_Vector/Vector.h"
-
+#include "../TDA_Vector/Vector.c"
 
 #define TODO_OK 0
 #define ERR_ARCH 1
@@ -99,14 +99,14 @@ int main()
 
     if(!existe)
         return ERR_ARCH;
-    
+
     arch = fopen("Empleados.dat", "r+b");
 
     fseek(arch, emplIdx.nroReg * sizeof(Empleado), SEEK_SET);
     fread(&empl, sizeof(Empleado), 1, arch);
     empl.sueldo *= porcProd;
     fseek(arch, -(long)sizeof(Empleado), SEEK_CUR);
-    fwrite(&empl, sizeof(Empleado), 1, arch);    
+    fwrite(&empl, sizeof(Empleado), 1, arch);
 
     fclose(arch);
 
@@ -179,7 +179,7 @@ int crearIndiceEmpleados(const char* nomArch, const char* nomArchIdx)
         fwrite(empIdxIt, sizeof(EmplIdx), 1, archIdx);
         empIdxIt = vectorItSiguiente(&it);
     }
-    
+
     fclose(archIdx);
 
     return TODO_OK;

@@ -18,3 +18,19 @@
 	<stddef.h>
 	<string.h>
 
+1718994305 source:c:\codigos\archivos\main.c
+	<stdio.h>
+	"../TDA_Vector/Vector.h"
+	"../TDA_Vector/Vector.c"
+
+1717449080 c:\codigos\tda_vector\vector.h
+	<stdbool.h>
+	<stddef.h>
+	<string.h>
+
+1717617317 c:\codigos\tda_vector\vector.c
+	<stdio.h>
+	<stdlib.h>
+	<memory.h>
+	"Vector.h"
+
