@@ -101,7 +101,17 @@ int llenarVector(Vector* vecMov,FILE* archMov)
         if(!vecMov->vec)
             return ERR_ARCH;
     }
+ 
     return TODO_OK;
+}
+
+int mostrarVector(Vector* vecMov)
+{
+    
+    for(int flag = 0; flag <= vecMov->ce; flag ++)
+    {
+        printf(" %-6s  %03d\n", vecMov->vec->codigo ,vecMov->vec->cantidad);
+    }
 }
 
 int actualizarProductos(const char* nomArchProd, const char* nomArchMov)
