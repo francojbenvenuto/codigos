@@ -34,6 +34,7 @@ int generarProductos(const char* nomArchProd);
 int generarMovimientos(const char* nomArchMov);
 int mostrarProductos(const char* nomArchProd);
 int actualizarProductos(const char* nomArchProd, const char* nomArchMov);
+void productosNuevos(Movimiento* movimientos, FILE* archTemporal, FILE* archMov);
 
 
 #endif // MERGE_H_INCLUDED

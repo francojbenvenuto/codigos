@@ -117,18 +117,7 @@ int actualizarProductos(const char* nomArchProd, const char* nomArchMov)
 
         if (cmp > 0)            //prducto nuevo
         {
-            strcpy(productoNuevo.codigo, movimientos.codigo);
-            *productoNuevo.descripcion = '\0';
-            productoNuevo.stock = movimientos.cantidad;
-
-            fread (&movimientos, sizeof(Movimiento), 1,archMov);
-            while (!feof(archMov) && strcmp (productoNuevo.codigo, movimientos.codigo) == 0)        //revisamos si el siguiente movimiento es un duplicado nuevo
-            {
-                productoNuevo.stock += movimientos.cantidad;
-                fread (&movimientos, sizeof(Movimiento), 1,archMov);
-            }
-
-            fwrite(&productoNuevo,sizeof(Producto),1 ,archTemp);  
+            productosNuevos(&movimientos, archTemp, archMov);
         }
 
     }
@@ -141,24 +130,9 @@ int actualizarProductos(const char* nomArchProd, const char* nomArchMov)
 
     while (!feof(archMov))
     {
-            strcpy(productoNuevo.codigo, movimientos.codigo);
-            *productoNuevo.descripcion = '\0';
-            productoNuevo.stock = movimientos.cantidad;
-
-            fread (&movimientos, sizeof(Movimiento), 1,archMov);
-            while (!feof(archMov) && strcmp (productoNuevo.codigo, movimientos.codigo) == 0)        //revisamos si el siguiente movimiento es un duplicado nuevo
-            {
-                productoNuevo.stock += movimientos.cantidad;
-                fread (&movimientos, sizeof(Movimiento), 1,archMov);
-            }
-
-            fwrite(&productoNuevo,sizeof(Producto),1 ,archTemp); 
-             
+        productosNuevos(&movimientos, archTemp, archMov);
     }
     
-    
-    
-
     fclose(archTemp);
     fclose(archMov);
     fclose(archProd);
@@ -169,5 +143,22 @@ int actualizarProductos(const char* nomArchProd, const char* nomArchMov)
     return TODO_OK;
 }
 
+void productosNuevos(Movimiento* movimientos, FILE* archTemporal, FILE* archMov)
+{
+    Producto productoNuevo;
+
+    strcpy(productoNuevo.codigo, movimientos->codigo);
+    *productoNuevo.descripcion = '\0';
+    productoNuevo.stock = movimientos->cantidad;
+
+    fread (movimientos, sizeof(Movimiento), 1,archMov);
+    while (!feof(archMov) && strcmp (productoNuevo.codigo, movimientos->codigo) == 0)        //revisamos si el siguiente movimiento es un duplicado nuevo
+    {
+        productoNuevo.stock += movimientos->cantidad;
+        fread (movimientos, sizeof(Movimiento), 1,archMov);
+    }
+
+    fwrite(&productoNuevo,sizeof(Producto),1 ,archTemporal); 
+}
 
 
