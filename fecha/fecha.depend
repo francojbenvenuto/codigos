@@ -1,12 +1,12 @@
 # depslib dependency file v1.0
-1717663983 source:c:\codigos\fecha\fecha.c
+1725018739 source:c:\codigos\fecha\fecha.c
 	"fecha.h"
 
-1717662339 c:\codigos\fecha\fecha.h
+1725018736 c:\codigos\fecha\fecha.h
 	<stdbool.h>
 	<stdio.h>
 	<stdlib.h>
 
-1717664056 source:c:\codigos\fecha\main.c
+1725018929 source:c:\codigos\fecha\main.c
 	"fecha.h"
 

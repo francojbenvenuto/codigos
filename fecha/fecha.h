@@ -30,5 +30,5 @@ int diaDeLaSemana(const Fecha* fecha);
 int diaDelAnio(const Fecha* fecha);
 Fecha diaDelAnioAFecha(int diaDelAnio, int anio);
 
-
+int calcularEdad (const Fecha* fecha,const Fecha* FHoy );
 #endif // FECHA_H

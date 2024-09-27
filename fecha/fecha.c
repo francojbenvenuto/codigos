@@ -108,3 +108,27 @@ int difEntreFechas( const Fecha* fecha1, const Fecha* fecha2)
     total = abs( Dfecha1 - Dfecha2) + abs(fecha1->anio - fecha2->anio)*365;         //este codigo no identifica si en el medio de muchos años de diferencia tiene bisiestos.
     return total;
 }
+
+
+
+int calcularEdad (const Fecha* fecha,const Fecha* FHoy )
+{
+    int edad;
+
+    if(difEntreFechas(fecha,FHoy) > 0)
+    {
+        edad = -(fecha->anio) + FHoy->anio;
+        if(fecha->anio == FHoy->anio && fecha->mes < FHoy->mes)
+        {
+            edad ++;
+        }
+        if(fecha->anio == FHoy->anio && fecha->mes == FHoy->mes && fecha->dia <= FHoy->mes)
+        {
+            edad ++;
+        }
+    }
+
+
+
+    return edad;    
+}

@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1727439981 source:c:\codigos\codigos_matriz\matriz\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Matriz.h"
+
+1727439344 c:\codigos\codigos_matriz\matriz\matriz.h
+	<stdlib.h>
+	<stdio.h>
+
+1727439845 source:c:\codigos\codigos_matriz\matriz\matriz.c
+	"Matriz.h"
+

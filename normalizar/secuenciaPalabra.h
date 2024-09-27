@@ -3,19 +3,19 @@
 
 #include <stdbool.h>
 #include <stdio.h>
-
+#include <string.h>
 
 #define TAM_CAD 101
 #define TAM_VEC_PAL 51
 
-typedef struct 
+typedef struct
 {
     char vecPal[TAM_VEC_PAL];
 }
 Palabra;
 
 
-typedef struct 
+typedef struct
 {
     char* iniCadena;
     char* cursor;
@@ -33,6 +33,8 @@ void palabraEscribir(SecuanciaPalabras* sec, const Palabra* pal);
 void palabraATitulo(Palabra* pal);
 void secuenciaCerrar(SecuanciaPalabras* sec);
 void escribirCaracter(SecuanciaPalabras* sec, char c);
+
+bool es_Palindromo( char* pla);
 
 // practica personal -- strcpy -- strcmp --palabraMasRepetida
 

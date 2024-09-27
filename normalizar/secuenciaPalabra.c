@@ -13,8 +13,8 @@ bool palabraLeer(SecuanciaPalabras* sec, Palabra* pal)
 {
     while (*sec->cursor != '\0' && !esLetra(*sec->cursor))
         sec->cursor++;
-    
-    
+
+
     if (*sec->cursor == '\0' )
     {
         sec->finSec = true;
@@ -51,7 +51,7 @@ void palabraEscribir(SecuanciaPalabras* sec, const Palabra* pal)
         *sec->cursor = *palAct;
         sec->cursor ++;
         palAct++;
-    }  
+    }
 }
 
 void palabraATitulo(Palabra* pal)
@@ -63,7 +63,7 @@ void palabraATitulo(Palabra* pal)
     {
         *palAct = aMinuscula(*palAct);
         palAct++;
-    }  
+    }
 }
 
 void secuenciaCerrar(SecuanciaPalabras* sec)
@@ -90,7 +90,7 @@ void copiarPalabra ( char* cadOrig, char* cadDest)
         cadDest ++;
         secLect.cursor ++;
     }
-    
+
 }
 
 bool compararPalabras(char* palabraUno, char* palabraDos)
@@ -105,18 +105,73 @@ bool compararPalabras(char* palabraUno, char* palabraDos)
     {
         if (*unoLectura.cursor == '\0' && *dosLectura.cursor == '\0')
             return true;
-        
+
         unoLectura.cursor ++;
         dosLectura.cursor ++;
     }
     return false;
 }
-/*                                                                              no funciono 
+
+
+
+bool es_Palindromo( char* pla )
+{
+ SecuanciaPalabras sec;
+secuenciaPalabrasCrear(&sec, pla);
+
+int nLetras = strlen(pla);
+
+char* ultimaPal = sec.cursor + nLetras;
+
+while (sec.cursor <= ultimaPal)
+{
+    if(*ultimaPal == ' ' || *ultimaPal == '\0' )
+    {
+        ultimaPal --;
+    }
+
+    if(*sec.cursor == ' ')
+    {
+        sec.cursor ++;
+    }
+
+        printf("letra 1 = %c \n", *sec.cursor);
+    printf("letra 2 = %c \n", *ultimaPal);
+    puts("\n");
+    if(aMinuscula(*sec.cursor) == aMinuscula(*ultimaPal))
+    {
+        sec.cursor ++;
+        ultimaPal --;
+    }
+    else
+    {
+        puts("ta muuuy mal \n");
+        return false;
+    }
+
+}
+return true;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*                                                                              no funciono
 char* palabraMasRepetida(const char* palabraOrigen, char* cadDest)
 {
     SecuanciaPalabras oracion;
     secuenciaPalabrasCrear(&oracion, palabraOrigen);
-    
+
     SecuanciaPalabras secEscr;
     secuenciaPalabrasCrear(&secEscr, cadDest);
 
@@ -166,7 +221,7 @@ void copiarPalabraPerso ( SecuanciaPalabras* cadOrig, SecuanciaPalabras* cadDest
         cadDest->cursor ++;
         cadOrig->cursor ++;
     }
-    
+
 }
 
 bool compararPalabrasPerso(SecuanciaPalabras* palabraUno, SecuanciaPalabras* palabraDos)
@@ -175,7 +230,7 @@ bool compararPalabrasPerso(SecuanciaPalabras* palabraUno, SecuanciaPalabras* pal
     {
         if (*palabraUno->cursor == '\0' && *palabraDos->cursor == '\0')
             return true;
-        
+
         palabraUno->cursor ++;
         palabraDos->cursor ++;
     }
@@ -189,3 +244,4 @@ void secuenciaPalabrasCrearPerso(SecuanciaPalabras* sec,  Palabra* cadena)
 }
 
 */
+

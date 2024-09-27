@@ -54,7 +54,7 @@ int esMatrizSimetrica(int orden, int** mat) {
 //     return 1;
 // }
 
-void** matrizCrear(size_t tamElem, int filas, int columnas) 
+void** matrizCrear(size_t tamElem, int filas, int columnas)
 {
     void** mat = (void**)malloc(sizeof(void*) * filas);
 
@@ -86,6 +86,15 @@ void matrizDestruir(void** mat, int filas) {
 }
 
 void inicializarMatriz(int orden, int** mat) {
+    int x = 0;
+    for (int i = 0; i < orden; i++) {
+      for (int j = 0; j < orden; j++) {
+          mat[i][j] = x;
+      }
+    }
+}
+
+void inicializarEnUno(int orden, int** mat) {
     int x = 1;
     for (int i = 0; i < orden; i++) {
       for (int j = 0; j < orden; j++, x++) {
@@ -94,7 +103,7 @@ void inicializarMatriz(int orden, int** mat) {
     }
 }
 
-void imprimirMatriz(int orden, int** mat) 
+void imprimirMatriz(int orden, int** mat)
 {
     for (int i = 0; i < orden; i++) {
       for (int j = 0; j < orden; j++) {
@@ -104,4 +113,46 @@ void imprimirMatriz(int orden, int** mat)
     }
 }
 
+void productoMatriz(int orden, int** mat, int ** mat2)
+{
+    int** matrizResultado = (int**)matrizCrear(sizeof(int), orden, orden);
+    inicializarMatriz(orden, matrizResultado);
 
+    for(int i= 0; i <orden;i++)
+    {
+        for (int j = 0; j < orden; j++)
+        {
+            for(int z = 0; z < orden ; z++)
+            {
+            matrizResultado[i][j] += mat[i][z] * mat2[z][j];
+            }
+        }
+
+    }
+    puts("\n producto cuadrada :");
+    imprimirMatriz(orden, matrizResultado);
+     matrizDestruir((void**)matrizResultado, orden);
+}
+
+
+void productoMatrizNoCuadrada(int orden, int** mat, int ** mat2, int filasMat2,int colMat)
+{
+    int** matrizResultado = (int**)matrizCrear(sizeof(int), filasMat2, colMat);
+
+    for(int i= 0; i <filasMat2;i++)
+    {
+        for (int j = 0; j < colMat; j++)
+        {
+            matrizResultado[i][j] = 0;
+
+            for(int z = 0; z < orden ; z++)
+            {
+            matrizResultado[i][j] += mat[i][z] * mat2[z][j];
+            }
+        }
+
+    }
+    puts("\n\n nocuadrada");
+    imprimirMatriz(filasMat2, matrizResultado);
+     matrizDestruir((void**)matrizResultado, orden);
+}

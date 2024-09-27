@@ -6,19 +6,22 @@
 
 int main()
 {
-    char cadANorm [] = "#$eSto #$$es ### una!$!$!&$&$ es /(!)cAdena!/(!/(!))";
+    char cadANorm [] = "se verlas al reves"; //#$eSto #$$es ### una!$!$!&$&$ es /(!)cAdena!/(!/(!))
     char cadNormalizada[TAM_CAD];
     char cadCopiada[TAM_CAD];
     char palMasRep[TAM_CAD];
 
-    printf("\t%s", normalizarCadena (cadNormalizada, cadANorm));
+    printf("\t%s \n", normalizarCadena (cadNormalizada, cadANorm));
+    if (es_Palindromo(cadNormalizada))
+        puts("esta bien");
 
+/*
     puts("\n\ncopia de la cadena : ");
     copiarPalabra (cadNormalizada,cadCopiada);
     printf("\t%s", cadCopiada );
 
     printf("\n\nla comparacion es: %s \n", compararPalabras(cadNormalizada,cadANorm)? "TRUE":"FALSE");
-
+*/
 /*                                                  no funciona
     palabraMasRepetida (cadANorm, palMasRep);
     puts("\n\nla palabra mas repetida es: ");

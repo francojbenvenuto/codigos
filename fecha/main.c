@@ -2,10 +2,10 @@
 
 int main()
 {
-
+    puts("ingresa fecha de hoy \n");
     Fecha fechaHoy = ingresarFecha();
     Fecha fechaFuturo, fechaPasado;
-    int diaSumar,diaRestar,diasTotales,diasDiferencia;
+    int diaSumar,diaRestar,diasTotales,diasDiferencia,edad;
     
 /*
     puts("cuantos dias le sumamos y restamos a la fecha? (suma / resta) \n");
@@ -22,11 +22,12 @@ int main()
     diasTotales = diaDelAnio(&fechaHoy);
     printf("%d\n\n\n\n",diasTotales);
 */
-    puts("ingresa una segunda fecha a comparar \n");
+    puts("ingresa fecha de tu cumple \n");
     Fecha fechaDos = ingresarFecha();
-    diasDiferencia = difEntreFechas(&fechaHoy,&fechaDos);
+    edad = calcularEdad (&fechaDos,&fechaHoy);
     puts("la diferencie entre las fechas es de : \n");
-    printf("%d\n",diasDiferencia);
+    printf("%d\n",edad);
+
 
     return 0;
 }
