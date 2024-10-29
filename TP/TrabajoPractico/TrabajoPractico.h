@@ -7,7 +7,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
+#define TAM_ESP 250
+#define TAM_NOMBRE 50
 #define TODO_OK 0
 #define TAM_LINEA 501
 
@@ -29,7 +30,6 @@ typedef struct
     size_t tamElem;
 } Vector;
 
-
 typedef struct 
 {
     int anio;
@@ -40,14 +40,6 @@ typedef struct
     int numForm;
 }DATOS;
 
-typedef struct
-{
-    char* iniCadena;
-    char* cursor;
-    bool finSec;
-}
-SecuanciaPalabras;
-
 typedef struct 
 {
     int codProducto;
@@ -55,15 +47,16 @@ typedef struct
     char especificaciones[250];
 }Especificaciones;
 
+
 typedef void (*Imprimir)(const void* );
+typedef int (*TxtAMem)(const char* linea, void* reg);
 
 bool vectorCrear(Vector* vector, size_t tamElem);
 void vectorEliminar(Vector* vector);
 void vectorMostrar(const Vector* vector, Imprimir imprimir);
 int vectorInsertarAlFinal(Vector* vector, const void* elem);
 
-int DescargarDatosTxt(const char* linea, void* reg);
-int descargarAMem(FILE* arch, Vector* vec, size_t tamReg );
+int descargarAMem(FILE* arch, Vector* vec, size_t tamReg, TxtAMem tipoTxt);
 
 
 

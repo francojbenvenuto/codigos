@@ -58,91 +58,89 @@ void vectorEliminar(Vector* vector)
     vector->vec = NULL;
 }
 
-
-int descargarAMem(FILE* arch, Vector* vec, size_t tamReg ) //tamreg es el tamaño de cada registro
+int descargarAMem(FILE* arch, Vector* vec, size_t tamReg, TxtAMem tipoTxt)  
 {
     void* reg = malloc(tamReg);
     int ret = TODO_OK;
     char linea[TAM_LINEA];
 
-    fgets(linea, TAM_LINEA, arch);        // lee la linea hasta un enter o que termine el tamaño linea -1
-    printf("%s\n", linea);
-    puts("1. 2 \n");
-
+    fgets(linea, TAM_LINEA, arch);     
+               
         while (!feof(arch))
     {
-        ret = DescargarDatosTxt(linea, reg);
+        ret = tipoTxt(linea, reg);
        
         if (ret == TODO_OK)
             vectorInsertarAlFinal(vec, reg);
 
-        
-        fgets(linea, TAM_LINEA, arch); // no usamos fscanf por posibles problemas con comas y puntos que no reconoce
-        printf("\n\n\n%s", linea);
+        fgets(linea, TAM_LINEA, arch);          
     }
-
     free(reg);
     return TODO_OK;
 }
 
-void reemplazarPuntoPorComa(char* linea) {
-    char *aux = strchr(linea, ','); // Busca la coma
-    if (aux != NULL) // Si la coma existe
-        *aux = '.'; // Reemplazo la coma por un punto
+void reemplazarPuntoPorComa(char* linea) 
+{
+    char *aux = strchr(linea, ',');             // Busca la coma
+    if (aux != NULL)                            // Si la coma existe
+        *aux = '.';                             // Reemplazo la coma por un punto
 }
 
 int DescargarDatosTxt(const char* linea, void* reg)
 {
     DATOS* datos = reg;
-/*
-    char* act = strchr(linea,'\n');
-    if(!act)
-        return ERR_LINEA_LARGA;
-
-    *act = '\0';
-    act = strrchr(linea,'|');
-    sscanf(act +1, "%d", &datos->numForm);   // es mas uno porque estamos en el | y el anterior(de atras a adelante) es el dato
-
-    *act = '\0';
-    act = strrchr(linea,'|');
-    sscanf(act +1, "%0,2f", &datos->precio); 
-
-    *act = '\0';
-    act = strrchr(linea,'|');
-    sscanf(act +1, "%d", &datos->codProducto); 
-
-    *act = '\0';
-    act = strrchr(linea,'|');
-    sscanf(act +1, "%d", &datos->codEmpresa); 
-
-    *act = '\0';
-    act = strrchr(linea,'|');
-    sscanf(act +1, "%d", &datos->mes); 
-
-    *act = '\0';
-    sscanf(act, "%d", &datos->anio); 
-
-    *act = '\0';    
-    printf("%d | %d | %d | %d | %0.2f | %d \n",datos->anio, datos->mes, datos->codEmpresa, datos->codProducto, datos->precio, datos->numForm );
-    */
    reemplazarPuntoPorComa(linea);
-
    sscanf(linea, "%d|%d|\"%d\"|\"%d\"|%f|%d", &datos->anio, &datos->mes, &datos->codEmpresa, &datos->codProducto, &datos->precio, &datos->numForm);
 
-   printf("%d | %d | %d | %d | %0.2f | %d \n",datos->anio, datos->mes, datos->codEmpresa, datos->codProducto, datos->precio, datos->numForm );
+   printf("%4d | %2d | %7d | %7d | %10.2f | %2d \n",datos->anio, datos->mes, datos->codEmpresa, datos->codProducto, datos->precio, datos->numForm );
     return TODO_OK;
 }
 
 int DescargarEspecificacionesTxt(const char* linea, void* reg)
 {
-    Especificaciones* especificaciones = reg;
+    Especificaciones * especificaciones = (Especificaciones *)reg;
+    eliminarComillas(linea);
+    char * act = strchr(linea,'\n');
+    *act ='\0';
+    act -= 1;
+    *act ='\0';
+    act = strrchr(linea,'|');
+    strncpy(especificaciones->especificaciones,act+2,TAM_ESP);
+    act -= 1;
+    *act ='\0';
+    act = strrchr(linea,'|');
+    strncpy(especificaciones->nomProducto,act+2,TAM_NOMBRE);
+    act -= 1;
+    *act ='\0';
 
-   reemplazarPuntoPorComa(linea);
+   sscanf(linea, "%d", &especificaciones->codProducto);
+   palabraATitulo(especificaciones->nomProducto);
+   palabraATitulo(especificaciones->especificaciones);
 
-   sscanf(linea, "\"%d\"|\"%s\"|\"%s\"", &especificaciones->codProducto, especificaciones->nomProducto, especificaciones->especificaciones);
-
-   printf("%d | %s | %s \n",especificaciones->codProducto, especificaciones->nomProducto, especificaciones->especificaciones);
+   printf("%d|%s|%s| \n",especificaciones->codProducto, especificaciones->nomProducto, especificaciones->especificaciones);
     return TODO_OK;
 }
 
+void eliminarComillas(char* linea) 
+{
+    char *aux = strchr(linea, '"'); // Busca la comilla
+    for (int i = 0; linea[i] != '\0'; i++)
+    {
+        if (aux != NULL) // Si la coma existe
+            *aux = ' '; // elimina la comilla
+        
+        aux = strchr(linea, '"');
+    }
+}
 
+void palabraATitulo(char* pal)
+{
+    *pal = aMayuscula(*pal);
+
+    char* palAct = pal + 1;
+    while (*palAct)
+    {
+        *palAct = aMinuscula(*palAct);
+        palAct++;
+    }
+}
