@@ -58,45 +58,45 @@ void vectorEliminar(Vector* vector)
     vector->vec = NULL;
 }
 
-int descargarAMem(FILE* arch, Vector* vec, size_t tamReg, TxtAMem tipoTxt)  
+int descargarAMem(FILE* arch, Vector* vec, size_t tamReg, TxtAMem tipoTxt,Cmp cmp)
 {
     void* reg = malloc(tamReg);
     int ret = TODO_OK;
     char linea[TAM_LINEA];
 
-    fgets(linea, TAM_LINEA, arch);     
-               
+    fgets(linea, TAM_LINEA, arch);
+
         while (!feof(arch))
     {
         ret = tipoTxt(linea, reg);
-       
-        if (ret == TODO_OK)
-            vectorInsertarAlFinal(vec, reg);
 
-        fgets(linea, TAM_LINEA, arch);          
+        if (ret == TODO_OK)
+            vectorOrdInsertar(vec, reg, cmp);
+
+        fgets(linea, TAM_LINEA, arch);
     }
     free(reg);
     return TODO_OK;
 }
 
-void reemplazarPuntoPorComa(char* linea) 
+void reemplazarPuntoPorComa(char* linea)
 {
     char *aux = strchr(linea, ',');             // Busca la coma
     if (aux != NULL)                            // Si la coma existe
         *aux = '.';                             // Reemplazo la coma por un punto
 }
 
-int DescargarDatosTxt(const char* linea, void* reg)
+int DescargarDatosTxt(char* linea, void* reg)
 {
     DATOS* datos = reg;
    reemplazarPuntoPorComa(linea);
    sscanf(linea, "%d|%d|\"%d\"|\"%d\"|%f|%d", &datos->anio, &datos->mes, &datos->codEmpresa, &datos->codProducto, &datos->precio, &datos->numForm);
 
-   printf("%4d | %2d | %7d | %7d | %10.2f | %2d \n",datos->anio, datos->mes, datos->codEmpresa, datos->codProducto, datos->precio, datos->numForm );
+  // printf("%4d | %2d | %7d | %7d | %10.2f | %2d \n",datos->anio, datos->mes, datos->codEmpresa, datos->codProducto, datos->precio, datos->numForm );
     return TODO_OK;
 }
 
-int DescargarEspecificacionesTxt(const char* linea, void* reg)
+int DescargarEspecificacionesTxt(char* linea, void* reg)
 {
     Especificaciones * especificaciones = (Especificaciones *)reg;
     eliminarComillas(linea);
@@ -117,18 +117,18 @@ int DescargarEspecificacionesTxt(const char* linea, void* reg)
    palabraATitulo(especificaciones->nomProducto);
    palabraATitulo(especificaciones->especificaciones);
 
-   printf("%d|%s|%s| \n",especificaciones->codProducto, especificaciones->nomProducto, especificaciones->especificaciones);
+   //printf("%d|%s|%s| \n",especificaciones->codProducto, especificaciones->nomProducto, especificaciones->especificaciones);
     return TODO_OK;
 }
 
-void eliminarComillas(char* linea) 
+void eliminarComillas(char* linea)
 {
     char *aux = strchr(linea, '"'); // Busca la comilla
     for (int i = 0; linea[i] != '\0'; i++)
     {
         if (aux != NULL) // Si la coma existe
             *aux = ' '; // elimina la comilla
-        
+
         aux = strchr(linea, '"');
     }
 }
@@ -144,3 +144,45 @@ void palabraATitulo(char* pal)
         palAct++;
     }
 }
+
+int vectorOrdInsertar(Vector* vector, const void* elem, Cmp cmp)
+{
+    if(vector->ce == vector->cap)
+    {
+        int nCap = vector->cap * 1.5;
+        int* nVec = realloc(vector->vec, nCap * vector->tamElem);
+
+        if(!nVec)
+            return SIN_MEM;
+
+        vector->cap = nCap;
+        vector->vec = nVec;
+    }
+
+    void* posIns = vector->vec;
+    void* ult = vector->vec + (vector->ce - 1) * vector->tamElem;
+
+    while(posIns <= ult && cmp(elem, posIns) > 0)
+        posIns += vector->tamElem;
+
+    if(posIns <= ult && cmp(elem, posIns) == 0)
+    {
+        puts("ERROR, CODIGO EVACUADO\n\n\n\n");    //hacemos las comparaciones necesarias en el cmp inicial, si entramos aca es error
+        exit(1);
+        return SIN_MEM;
+    }
+       
+    for(void* i = ult; i >= posIns; i -= vector->tamElem)
+        memcpy(i + vector->tamElem, i, vector->tamElem);
+
+    memcpy(posIns, elem, vector->tamElem);
+    vector->ce++;
+
+    return TODO_OK;
+}
+
+
+
+
+
+

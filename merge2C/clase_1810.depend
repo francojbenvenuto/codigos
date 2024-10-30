@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1729257938 source:c:\users\matia\documents\clase_1810\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

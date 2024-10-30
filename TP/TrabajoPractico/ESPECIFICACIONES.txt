@@ -95,7 +95,7 @@
 "2211102"|"GaSeoSa baSe cola en laTa"|"primera marca. de 200 a 500 ml. exClUiR dieTéTicaS."
 "2112404"|"Maíz piSINgallo"|"SuelTo o enVASado. de 100 g a 1000 g."
 "2124212"|"Medallón de merluza"|"Rebozado. SIN lOL relleno. SuelToS ollo enVASadoS."
-NA|"LápiceS de coloreS"|"LargoS. 12 unidadeS."
+"7221110"|"LápiceS de coloreS"|"LargoS. 12 unidadeS."
 "2143303"|"Helado individual"|"de paliTo. de crema o de agua. Un Sabor. exClUiR CON baño olo chocolaTe. por unidad."
 "2162207"|"MilaneSaS de Soja"|"por 4 unidadeS. exClUiR SABOrizAdAS y rellenaS."
 "2172106"|"Turrón de maní"|"Oblea rellena CON paSTa de Turrón y maní. de 20 a 30 g. radar unidad. exClUiR SaborizadoS."

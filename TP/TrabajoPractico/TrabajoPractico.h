@@ -39,7 +39,7 @@ typedef struct
     float precio;
     int numForm;
 }DATOS;
-
+ 
 typedef struct 
 {
     int codProducto;
@@ -50,15 +50,22 @@ typedef struct
 
 typedef void (*Imprimir)(const void* );
 typedef int (*TxtAMem)(const char* linea, void* reg);
+typedef int (*Cmp)(const void* e1 , const void* e2);
+
 
 bool vectorCrear(Vector* vector, size_t tamElem);
 void vectorEliminar(Vector* vector);
 void vectorMostrar(const Vector* vector, Imprimir imprimir);
 int vectorInsertarAlFinal(Vector* vector, const void* elem);
 
-int descargarAMem(FILE* arch, Vector* vec, size_t tamReg, TxtAMem tipoTxt);
+
+int descargarAMem(FILE* arch, Vector* vec, size_t tamReg, TxtAMem tipoTxt, Cmp cmp);
 
 
-
+void palabraATitulo(char* pal);
+void eliminarComillas(char* linea);
+void reemplazarPuntoPorComa(char* linea);
+int vectorOrdInsertar(Vector* vector, const void* elem, Cmp cmp);
 
 #endif // TRABAJOPRACTICO_H
+
