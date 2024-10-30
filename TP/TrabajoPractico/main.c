@@ -18,11 +18,11 @@ int main()
     Vector articulosEspecificaciones;
     vectorCrear(&articulosEspecificaciones, sizeof(Especificaciones));
 
-    FILE* datosArch = fopen("DATOS.txt","rt");
+    FILE* datosArch = fopen("DATOS.txt","r");
     if(!datosArch)
         return ERR_ARCH;
 
-    FILE* espArch = fopen("ESPECIFICACIONES.txt","rt");
+    FILE* espArch = fopen("ESPECIFICACIONES.txt","r");
     if(!espArch)
         return ERR_ARCH;
 
@@ -33,7 +33,7 @@ int main()
 
 
 
-    vectorMostrar(&articulosMayorista, mostrarDatos);
+   // vectorMostrar(&articulosMayorista, mostrarDatos);
     vectorMostrar(&articulosEspecificaciones, mostrarEspecificaciones);
 
 
@@ -53,7 +53,7 @@ void mostrarDatos(const void* e1)
 void mostrarEspecificaciones(const void* e1)
 {
     const Especificaciones* especificaciones1 = e1;
-    printf("%7d | %s | %s",especificaciones1->codProducto, especificaciones1->nomProducto, especificaciones1->especificaciones);
+    printf("%7d | %-50s | %s",especificaciones1->codProducto, especificaciones1->nomProducto, especificaciones1->especificaciones);
 }
 
 int cmpCodProductoDatos(const void* e1, const void* e2)
@@ -93,22 +93,8 @@ int cmpCodProdEspecificaciones(const void* e1, const void* e2)
 {
     const Especificaciones* especificaciones1 = e1;
     const Especificaciones* especificaciones2 = e2;
-    int resultado = especificaciones1->codProducto - especificaciones2->codProducto;
 
-    if(resultado == 0)
-    {
-        printf("resultado = %d   --- producto 1 = %d  -  producto 2 = %d \n", resultado, especificaciones1->codProducto, especificaciones2->codProducto);
-        printf(" producto 1 = %s  -  producto 2 = %s \n", especificaciones1->nomProducto, especificaciones2->nomProducto);
-
-        resultado = strcmp(especificaciones1->nomProducto, especificaciones2->nomProducto);
-        if (resultado == 0)
-        {
-            resultado = strcmp(especificaciones1->especificaciones, especificaciones2->especificaciones);
-        }
-    }
-
-    
-    return resultado;
+    return especificaciones1->codProducto - especificaciones2->codProducto;
 }
 
 void mostrarIguales(const void* e1, const void* e2)

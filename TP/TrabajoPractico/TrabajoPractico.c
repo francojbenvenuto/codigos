@@ -126,7 +126,7 @@ void eliminarComillas(char* linea)
     char *aux = strchr(linea, '"'); // Busca la comilla
     for (int i = 0; linea[i] != '\0'; i++)
     {
-        if (aux != NULL) // Si la coma existe
+        if (aux != NULL) // Si la coma existe|
             *aux = ' '; // elimina la comilla
 
         aux = strchr(linea, '"');
@@ -135,12 +135,23 @@ void eliminarComillas(char* linea)
 
 void palabraATitulo(char* pal)
 {
-    *pal = aMayuscula(*pal);
+    if(TIENE_ACENTO(*pal))
+        *pal = Acento_MAYUSCULA(*pal);
+
+    else   
+        { 
+        *pal = aMayuscula(*pal);
+        }
 
     char* palAct = pal + 1;
     while (*palAct)
     {
-        *palAct = aMinuscula(*palAct);
+        if(TIENE_ACENTO(*palAct))
+            *palAct = Acento_MINUSCULA(*palAct);
+
+        else
+            *palAct = aMinuscula(*palAct);
+            
         palAct++;
     }
 }
@@ -171,7 +182,7 @@ int vectorOrdInsertar(Vector* vector, const void* elem, Cmp cmp)
         exit(1);
         return SIN_MEM;
     }
-       
+
     for(void* i = ult; i >= posIns; i -= vector->tamElem)
         memcpy(i + vector->tamElem, i, vector->tamElem);
 

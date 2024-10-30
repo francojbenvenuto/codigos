@@ -1,17 +1,17 @@
 # depslib dependency file v1.0
-1730247272 source:c:\codigos\tp\trabajopractico\main.c
+1730258793 source:c:\codigos\tp\trabajopractico\main.c
 	<stdio.h>
 	<stdlib.h>
 	"TrabajoPractico.h"
 
-1730247275 c:\codigos\tp\trabajopractico\trabajopractico.h
+1730259999 c:\codigos\tp\trabajopractico\trabajopractico.h
 	<stdbool.h>
 	<stddef.h>
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
 
-1730245978 source:c:\codigos\tp\trabajopractico\trabajopractico.c
+1730258339 source:c:\codigos\tp\trabajopractico\trabajopractico.c
 	"TrabajoPractico.h"
 	<stdio.h>
 	<stdlib.h>
