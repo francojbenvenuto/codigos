@@ -135,21 +135,21 @@ void eliminarComillas(char* linea)
 
 void palabraATitulo(char* pal)
 {
-    if(TIENE_ACENTO(*pal))
-        *pal = Acento_MAYUSCULA(*pal);
+   // if(TIENE_ACENTO(*pal))
+       // *pal = Acento_MAYUSCULA(*pal);
 
-    else   
-        { 
+   // else   
+        
         *pal = aMayuscula(*pal);
-        }
+        
 
     char* palAct = pal + 1;
     while (*palAct)
     {
-        if(TIENE_ACENTO(*palAct))
-            *palAct = Acento_MINUSCULA(*palAct);
+       // if(TIENE_ACENTO(*palAct))
+          //  *palAct = Acento_MINUSCULA(*palAct);
 
-        else
+       // else
             *palAct = aMinuscula(*palAct);
             
         palAct++;
@@ -193,7 +193,77 @@ int vectorOrdInsertar(Vector* vector, const void* elem, Cmp cmp)
 }
 
 
+int Merge(Vector* vecDatos, Vector* vecEspeci) 
+{
+    DATOS* datos;
+    Especificaciones* especificaciones;
+    int comp;
+
+    void* ultDatos = vecDatos->vec + (vecDatos->ce - 1) * vecDatos->tamElem;
+    void* ultEspec = vecEspeci->vec + (vecEspeci->ce - 1) * vecEspeci->tamElem;
+    void* i = vecDatos->vec;
+    void* j = vecEspeci->vec;
+
+    puts("1\n");
+    while( i <= ultDatos && j <= ultEspec )
+    {
+        puts("2\n");
+        datos =  i;
+        especificaciones = j;
+        comp= datos->codProducto - especificaciones->codProducto;
+        if( comp == 0)              //producto tiene precio y especificacion
+        {
+                // funcion cuando un producto tiene precio
+            puts("3\n");
+            i += vecDatos->tamElem;
+        }
+        if( comp <0) // especificaion paso al producto   (aca flor)
+        {
+                // funcion de flor
+            puts("4\n");
+            crearArchBinario(especificaciones);
+            i += vecDatos->tamElem;  //va al siguiente vector vector[i+1]
+        }
+        if(comp >0) // producto paso a especificacion
+        {
+            // funcion para cuando un prod termina la especificacion
+            puts("5\n");
+            j += vecEspeci->tamElem;
+        }
+    }
+    for (;i <= ultDatos; i += vecDatos->tamElem)
+    {
+        datos =  i;
+    
+    }
+
+    for (;j <= vecEspeci; j += vecEspeci->tamElem)
+    {
+        especificaciones = j;
+        puts("6\n");
+        crearArchBinario(especificaciones);
+
+    }
 
 
 
+    return 0;
+}
 
+
+
+void crearArchBinario (Especificaciones *espe)
+{
+    puts("4.1\n");
+    FILE *pf;
+    pf= fopen ("sinprecios.bin","wb");
+    if (pf==NULL)
+    {
+        printf("No se pudo abrir el archivo");
+        exit(1);
+    }
+    puts("4.2\n");
+    fwrite(&espe,1,sizeof(Especificaciones),pf);
+    printf("%7d | %-50s | %s",espe->codProducto, espe->nomProducto, espe->especificaciones);
+    fclose(pf);
+}

@@ -6,6 +6,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <locale.h>
 
 #define TAM_ESP 250
 #define TAM_NOMBRE 50
@@ -39,12 +40,12 @@
 
 */
 
-#define TIENE_ACENTO(c) ((c) == '225' || (c) == '233' || (c) == '237' || (c) == '243' || (c) == '250' || \
-                          (c) == '193' || (c) == '201' || (c) == '205' || (c) == '211' || (c) == '218')
+#define TIENE_ACENTO(c) ((c) == 225 || (c) == 233 || (c) == 237 || (c) == 243 || (c) == 250 || \
+                          (c) == 193 || (c) == 201 || (c) == 205 || (c) == 211 || (c) == 218)
 
-#define Acento_MINUSCULA(c) ((c) == '193' || (c) == '201' || (c) == '205' || (c) == '211' || (c) == '218'? (c) + 32 : (c))
+#define Acento_MINUSCULA(c) ((c) == 193 || (c) == 201 || (c) == 205 || (c) == 211 || (c) == 218? (c) + 32 : (c))
 
-#define Acento_MAYUSCULA(c) ((c) == '225' || (c) == '233' || (c) == '237' || (c) == '243' || (c) == '250' ? (c) - 32 : (c))
+#define Acento_MAYUSCULA(c) ((c) == 225 || (c) == 233 || (c) == 237 || (c) == 243 || (c) == 250 ? (c) - 32 : (c))
 
 
 typedef struct
@@ -82,10 +83,10 @@ bool vectorCrear(Vector* vector, size_t tamElem);
 void vectorEliminar(Vector* vector);
 void vectorMostrar(const Vector* vector, Imprimir imprimir);
 int vectorInsertarAlFinal(Vector* vector, const void* elem);
-
+int Merge(Vector* vecDatos, Vector* vecEspeci);
 
 int descargarAMem(FILE* arch, Vector* vec, size_t tamReg, TxtAMem tipoTxt, Cmp cmp);
-
+void crearArchBinario (Especificaciones *espe);
 
 void palabraATitulo(char* pal);
 void eliminarComillas(char* linea);

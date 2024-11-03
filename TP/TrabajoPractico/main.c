@@ -12,7 +12,7 @@ void mostrarIguales(const void* e1, const void* e2);
 
 int main()
 {
-
+    setlocale(LC_ALL,"Spanish");
     Vector articulosMayorista;
     vectorCrear(&articulosMayorista, sizeof(DATOS));
     Vector articulosEspecificaciones;
@@ -21,6 +21,7 @@ int main()
     FILE* datosArch = fopen("DATOS.txt","r");
     if(!datosArch)
         return ERR_ARCH;
+
 
     FILE* espArch = fopen("ESPECIFICACIONES.txt","r");
     if(!espArch)
@@ -32,13 +33,14 @@ int main()
     fclose(espArch);
 
 
+    //Merge(&articulosMayorista, &articulosEspecificaciones);
 
-   // vectorMostrar(&articulosMayorista, mostrarDatos);
+    vectorMostrar(&articulosMayorista, mostrarDatos);
     vectorMostrar(&articulosEspecificaciones, mostrarEspecificaciones);
 
 
-    vectorEliminar(&articulosMayorista);
-    vectorEliminar(&articulosEspecificaciones);
+    //vectorEliminar(&articulosMayorista);
+    //vectorEliminar(&articulosEspecificaciones);
 
     return TODO_OK;
 }
