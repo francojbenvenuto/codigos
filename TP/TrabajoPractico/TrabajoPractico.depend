@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1730688855 source:c:\codigos\tp\trabajopractico\main.c
+1730743701 source:c:\codigos\tp\trabajopractico\main.c
 	"TrabajoPractico.h"
 
 1730688671 c:\codigos\tp\trabajopractico\trabajopractico.h
@@ -10,8 +10,6 @@
 	<stdlib.h>
 	<locale.h>
 
-1730687426 source:c:\codigos\tp\trabajopractico\trabajopractico.c
+1730743668 source:c:\codigos\tp\trabajopractico\trabajopractico.c
 	"TrabajoPractico.h"
-	<stdio.h>
-	<stdlib.h>
 

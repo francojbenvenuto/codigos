@@ -37,7 +37,6 @@ int vectorInsertarAlFinal(Vector* vector, const void* elem)
     return TODO_OK;
 }
 
-
 void vectorMostrar(const Vector* vector, Imprimir imprimir)
 {
     void* ult = vector->vec + (vector->ce - 1) * vector->tamElem;
@@ -65,7 +64,7 @@ int descargarAMem(FILE* arch, Vector* vec, size_t tamReg, TxtAMem tipoTxt,Cmp cm
 
     fgets(linea, TAM_LINEA, arch);
 
-        while (!feof(arch))
+    while (!feof(arch))
     {
         ret = tipoTxt(linea, reg);
 
@@ -87,11 +86,11 @@ void reemplazarPuntoPorComa(char* linea)
 
 int DescargarDatosTxt(char* linea, void* reg)
 {
-    DATOS* datos = reg;
-   reemplazarPuntoPorComa(linea);
-   sscanf(linea, "%d|%d|\"%d\"|\"%d\"|%f|%d", &datos->anio, &datos->mes, &datos->codEmpresa, &datos->codProducto, &datos->precio, &datos->numForm);
+    Datos* datos = reg;
+    //reemplazarPuntoPorComa(linea);
+    sscanf(linea, "%d|%d|\"%d\"|\"%d\"|%f|%d", &datos->anio, &datos->mes, &datos->codEmpresa, &datos->codProducto, &datos->precio, &datos->numForm);
 
-  // printf("%4d | %2d | %7d | %7d | %10.2f | %2d \n",datos->anio, datos->mes, datos->codEmpresa, datos->codProducto, datos->precio, datos->numForm );
+    //printf("%4d | %2d | %7d | %7d | %10.2f | %2d \n",datos->anio, datos->mes, datos->codEmpresa, datos->codProducto, datos->precio, datos->numForm );
     return TODO_OK;
 }
 
@@ -133,9 +132,9 @@ void eliminarComillas(char* linea)
 }
 
 void palabraATitulo(char* pal)
-{     
+{
         *pal = aMayuscula(*pal);
-        
+
     char* palAct = pal + 1;
     while (*palAct)
     {
@@ -181,77 +180,84 @@ int vectorOrdInsertar(Vector* vector, const void* elem, Cmp cmp)
 }
 
 
-int Merge(Vector* vecDatos, Vector* vecEspeci) 
+int Merge(Vector* vecDatos, Vector* vecEspeci)
 {
-    DATOS* datos;
+    Datos* datos;
     Especificaciones* especificaciones;
+    Vector* vecProm;
+    vectorCrear(vecProm,sizeof(STRP));
     int comp;
     void* ultDatos = vecDatos->vec + (vecDatos->ce - 1) * vecDatos->tamElem;
     void* ultEspec = vecEspeci->vec + (vecEspeci->ce - 1) * vecEspeci->tamElem;
-    void* i = vecDatos->vec;
-    void* j = vecEspeci->vec;
+    void* puntDatos = vecDatos->vec;
+    void* puntEspec = vecEspeci->vec;
+    int contador = 0;
 
-    while( i <= ultDatos && j <= ultEspec )
+    while( puntDatos <= ultDatos && puntEspec <= ultEspec )
     {
-        
-        datos =  i;
-        especificaciones = j;
+
+
+        datos =  puntDatos;
+        especificaciones = puntEspec;
         comp= datos->codProducto - especificaciones->codProducto;
         if( comp == 0)                      //producto tiene precio y especificacion
         {
-            // funcion cuando un producto tiene precio
-            
-            i = i + vecDatos->tamElem;
+            if(buscarProducto(&datos->codProducto)){
+              contador = punto5(puntDatos,especificaciones->nomProducto,vecProm,ultDatos,vecDatos->tamElem);
+              puntDatos = puntDatos + vecDatos->tamElem * contador;
+            }
+            else{
+                puntDatos = puntDatos + vecDatos->tamElem;
+            }
         }
-        if( comp <0)                        
+
+        if( comp <0)
         {
-            //    Nunca entra por logica, se hace en el while > 0 
+            //    Nunca entra por logica, se hace en el while > 0
         }
+
         if(comp >0) // producto paso a especificacion
         {
             // funcion para cuando un prod termina la especificacion
-           
-
 
 
            //funcion de productos sin precio -----------------------------------
-           j += vecEspeci->tamElem;
-           especificaciones = j;
+           puntEspec += vecEspeci->tamElem;
+           especificaciones = puntEspec;
            while (datos->codProducto - especificaciones->codProducto > 0)
            {
-                //printf("codigo sin precio : %d\n",especificaciones->codProducto);
                 crearArchBinario(especificaciones);
-                j += vecEspeci->tamElem;
-                especificaciones = j;
+                puntEspec += vecEspeci->tamElem;
+                especificaciones = puntEspec;
            }
            //----------------------------------------------------------------------
         }
     }
-    j += vecEspeci->tamElem;    //lo agrege nuevo, se repite el ultimo sino
-
-    while (i <= ultDatos)
+    puntEspec+= vecEspeci->tamElem;
+    while (puntDatos <= ultDatos)
     {
-        datos =  i;
+        datos =  puntDatos;
         puts("7\n");
-        i += vecDatos->tamElem;
+        puntDatos += vecDatos->tamElem;
     }
 
-    while (j <= ultEspec)
+    while (puntEspec <= ultEspec)
     {
-        especificaciones = j;
+        especificaciones = puntEspec;
         puts("6\n");
         crearArchBinario(especificaciones);
-        j += vecEspeci->tamElem;
+        puntEspec += vecEspeci->tamElem;
     }
 
-
+    vectorArchivo(vecProm);
+    vectorEliminar(vecProm);
 
     return 0;
 }
 
 
 
-void crearArchBinario (Especificaciones *espe)
+void crearArchBinario (Especificaciones *espe) 
 {
     FILE *pf;
     pf= fopen ("sinprecios.bin","wb");
@@ -266,3 +272,101 @@ void crearArchBinario (Especificaciones *espe)
 }
 
 
+//----------------------------------------------------------------PUNTO 5 ------------------------------------------------------------
+
+int punto5(void* puntoDatos,void* puntoEsp,Vector* vecProm, void * ultDatos,size_t tamElem)   
+{   
+    int contador = 0;
+    
+    Especificaciones* esp = puntoEsp;
+    Datos* datos = puntoDatos;
+    STRP Prom;
+
+    Prom.codProducto =datos->codProducto;
+    strcpy(Prom.nomProducto,esp);
+
+    Prom.prom[0]=0;
+    Prom.prom[1]=0;
+    Prom.prom[2]=0;
+    Prom.prom[3]=0;
+
+    Prom.cant[0]=0;
+    Prom.cant[1]=0;     
+    Prom.cant[2]=0;
+    Prom.cant[3]=0;
+
+    while(datos->codProducto - Prom.codProducto == 0 )
+    {
+        if(datos->mes>=2 && datos->mes<=5)
+        {
+
+            Prom.prom[datos->mes-2]+=datos->precio;
+            Prom.cant[datos->mes-2]++;
+        }
+
+        
+        puntoDatos+=tamElem;
+        contador++;
+        datos=puntoDatos;
+    }
+    vectorInsertarAlFinal(vecProm,&Prom);
+    return contador;
+}
+
+bool vectorOrdBuscar(const Vector* vector, void* elem, Cmp cmp)
+{
+    void* posAct = vector->vec;
+    void* ult = vector->vec + (vector->ce - 1) * vector->tamElem;
+
+    while(posAct <= ult && cmp(elem, posAct) > 0)
+        posAct += vector->tamElem;
+
+    if(posAct <= ult && cmp(elem, posAct) == 0)
+        {
+            memcpy(elem,posAct,vector->tamElem);
+            return true;
+        }
+
+    return false;
+}
+
+bool buscarProducto(const int* cod)
+{
+    int codPrd[]={2111203,2113301,2113302,2162201,2232102};
+
+    for(int i=0;i<=4;i++)
+    {
+        if(codPrd[i]==*cod)
+            return true;
+    }
+
+    return false;
+}
+
+void vectorArchivo(const Vector* vector)
+{
+    STRP* Prom;
+    FILE *pf;
+    void* i;
+    pf= fopen ("Punto5.txt","wt");
+
+    if (pf==NULL)
+    {
+        printf("No se pudo abrir el archivo");
+        exit(1);
+    }
+    void* ult = vector->vec + (vector->ce) * vector->tamElem;
+    for(int m=0; m<=3;m++)
+    {
+        for(i = vector->vec; i < ult; i += vector->tamElem)
+        {
+            Prom = i;
+            fprintf(pf," %5d | %5d | %6.02f | %5d | %-50s \n",m+2,Prom->codProducto,Prom->prom[m]/(float)Prom->cant[m],Prom->cant[m],Prom->nomProducto);
+        }
+        fprintf(pf,"\n");
+    }
+
+    fclose(pf);
+}
+
+//  ------------------------------------------------------------  fin punto 5 ------------------------------------------------------------
