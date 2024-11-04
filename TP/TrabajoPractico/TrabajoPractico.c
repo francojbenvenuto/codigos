@@ -134,24 +134,13 @@ void eliminarComillas(char* linea)
 }
 
 void palabraATitulo(char* pal)
-{
-   // if(TIENE_ACENTO(*pal))
-       // *pal = Acento_MAYUSCULA(*pal);
-
-   // else   
-        
+{     
         *pal = aMayuscula(*pal);
         
-
     char* palAct = pal + 1;
     while (*palAct)
     {
-       // if(TIENE_ACENTO(*palAct))
-          //  *palAct = Acento_MINUSCULA(*palAct);
-
-       // else
             *palAct = aMinuscula(*palAct);
-            
         palAct++;
     }
 }
@@ -207,28 +196,28 @@ int Merge(Vector* vecDatos, Vector* vecEspeci)
     puts("1\n");
     while( i <= ultDatos && j <= ultEspec )
     {
-        puts("2\n");
+        
         datos =  i;
         especificaciones = j;
         comp= datos->codProducto - especificaciones->codProducto;
-        if( comp == 0)              //producto tiene precio y especificacion
+        if( comp == 0)                      //producto tiene precio y especificacion
         {
-                // funcion cuando un producto tiene precio
-            puts("3\n");
-            i += vecDatos->tamElem;
+                                            // funcion cuando un producto tiene precio
+            //puts("3\n");
+            i = i + vecDatos->tamElem;
         }
-        if( comp <0) // especificaion paso al producto   (aca flor)
+        if( comp <0)                        // especificaion paso al producto   (aca flor)
         {
-                // funcion de flor
+                                            // funcion de flor
             puts("4\n");
             crearArchBinario(especificaciones);
-            i += vecDatos->tamElem;  //va al siguiente vector vector[i+1]
+            i += vecDatos->tamElem;         //va al siguiente vector vector[i+1]
         }
         if(comp >0) // producto paso a especificacion
         {
-            // funcion para cuando un prod termina la especificacion
-            puts("5\n");
-            j += vecEspeci->tamElem;
+                                            // funcion para cuando un prod termina la especificacion
+           // puts("5\n");
+           //j += vecEspeci->tamElem;
         }
     }
     for (;i <= ultDatos; i += vecDatos->tamElem)
@@ -242,7 +231,6 @@ int Merge(Vector* vecDatos, Vector* vecEspeci)
         especificaciones = j;
         puts("6\n");
         crearArchBinario(especificaciones);
-
     }
 
 
@@ -267,3 +255,5 @@ void crearArchBinario (Especificaciones *espe)
     printf("%7d | %-50s | %s",espe->codProducto, espe->nomProducto, espe->especificaciones);
     fclose(pf);
 }
+
+

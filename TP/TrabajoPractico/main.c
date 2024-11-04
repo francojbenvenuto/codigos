@@ -32,16 +32,14 @@ int main()
     fclose(datosArch);
     fclose(espArch);
 
-
+    
     //Merge(&articulosMayorista, &articulosEspecificaciones);
 
-    vectorMostrar(&articulosMayorista, mostrarDatos);
+    //vectorMostrar(&articulosMayorista, mostrarDatos);
     vectorMostrar(&articulosEspecificaciones, mostrarEspecificaciones);
 
-
-    //vectorEliminar(&articulosMayorista);
-    //vectorEliminar(&articulosEspecificaciones);
-
+    vectorEliminar(&articulosMayorista);
+    vectorEliminar(&articulosEspecificaciones);
     return TODO_OK;
 }
 
@@ -57,7 +55,6 @@ void mostrarEspecificaciones(const void* e1)
     const Especificaciones* especificaciones1 = e1;
     printf("%7d | %-50s | %s",especificaciones1->codProducto, especificaciones1->nomProducto, especificaciones1->especificaciones);
 }
-
 int cmpCodProductoDatos(const void* e1, const void* e2)
 {
     const DATOS* datos1 = e1;
@@ -90,7 +87,6 @@ int cmpCodProductoDatos(const void* e1, const void* e2)
     
     return resultado;
 }
-
 int cmpCodProdEspecificaciones(const void* e1, const void* e2)
 {
     const Especificaciones* especificaciones1 = e1;
@@ -98,7 +94,6 @@ int cmpCodProdEspecificaciones(const void* e1, const void* e2)
 
     return especificaciones1->codProducto - especificaciones2->codProducto;
 }
-
 void mostrarIguales(const void* e1, const void* e2)
 {
     const DATOS* datos1 = e1;

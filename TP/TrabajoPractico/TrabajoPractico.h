@@ -40,14 +40,6 @@
 
 */
 
-#define TIENE_ACENTO(c) ((c) == 225 || (c) == 233 || (c) == 237 || (c) == 243 || (c) == 250 || \
-                          (c) == 193 || (c) == 201 || (c) == 205 || (c) == 211 || (c) == 218)
-
-#define Acento_MINUSCULA(c) ((c) == 193 || (c) == 201 || (c) == 205 || (c) == 211 || (c) == 218? (c) + 32 : (c))
-
-#define Acento_MAYUSCULA(c) ((c) == 225 || (c) == 233 || (c) == 237 || (c) == 243 || (c) == 250 ? (c) - 32 : (c))
-
-
 typedef struct
 {
     void* vec;
@@ -77,7 +69,7 @@ typedef struct
 typedef void (*Imprimir)(const void* );
 typedef int (*TxtAMem)(const char* linea, void* reg);
 typedef int (*Cmp)(const void* e1 , const void* e2);
-
+typedef void (*Accion)(void* , void*);
 
 bool vectorCrear(Vector* vector, size_t tamElem);
 void vectorEliminar(Vector* vector);
