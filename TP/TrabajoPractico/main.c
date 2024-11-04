@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "TrabajoPractico.h"
 
 void mostrarDatos(const void* e1);
@@ -33,10 +31,10 @@ int main()
     fclose(espArch);
 
     
-    //Merge(&articulosMayorista, &articulosEspecificaciones);
+    Merge(&articulosMayorista, &articulosEspecificaciones);
 
     //vectorMostrar(&articulosMayorista, mostrarDatos);
-    vectorMostrar(&articulosEspecificaciones, mostrarEspecificaciones);
+    //vectorMostrar(&articulosEspecificaciones, mostrarEspecificaciones);
 
     vectorEliminar(&articulosMayorista);
     vectorEliminar(&articulosEspecificaciones);

@@ -1,6 +1,4 @@
 #include "TrabajoPractico.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 
 bool vectorCrear(Vector* vector, size_t tamElem)
@@ -38,6 +36,7 @@ int vectorInsertarAlFinal(Vector* vector, const void* elem)
 
     return TODO_OK;
 }
+
 
 void vectorMostrar(const Vector* vector, Imprimir imprimir)
 {
@@ -187,13 +186,11 @@ int Merge(Vector* vecDatos, Vector* vecEspeci)
     DATOS* datos;
     Especificaciones* especificaciones;
     int comp;
-
     void* ultDatos = vecDatos->vec + (vecDatos->ce - 1) * vecDatos->tamElem;
     void* ultEspec = vecEspeci->vec + (vecEspeci->ce - 1) * vecEspeci->tamElem;
     void* i = vecDatos->vec;
     void* j = vecEspeci->vec;
 
-    puts("1\n");
     while( i <= ultDatos && j <= ultEspec )
     {
         
@@ -202,35 +199,49 @@ int Merge(Vector* vecDatos, Vector* vecEspeci)
         comp= datos->codProducto - especificaciones->codProducto;
         if( comp == 0)                      //producto tiene precio y especificacion
         {
-                                            // funcion cuando un producto tiene precio
-            //puts("3\n");
+            // funcion cuando un producto tiene precio
+            
             i = i + vecDatos->tamElem;
         }
-        if( comp <0)                        // especificaion paso al producto   (aca flor)
+        if( comp <0)                        
         {
-                                            // funcion de flor
-            puts("4\n");
-            crearArchBinario(especificaciones);
-            i += vecDatos->tamElem;         //va al siguiente vector vector[i+1]
+            //    Nunca entra por logica, se hace en el while > 0 
         }
         if(comp >0) // producto paso a especificacion
         {
-                                            // funcion para cuando un prod termina la especificacion
-           // puts("5\n");
-           //j += vecEspeci->tamElem;
+            // funcion para cuando un prod termina la especificacion
+           
+
+
+
+           //funcion de productos sin precio -----------------------------------
+           j += vecEspeci->tamElem;
+           especificaciones = j;
+           while (datos->codProducto - especificaciones->codProducto > 0)
+           {
+                //printf("codigo sin precio : %d\n",especificaciones->codProducto);
+                crearArchBinario(especificaciones);
+                j += vecEspeci->tamElem;
+                especificaciones = j;
+           }
+           //----------------------------------------------------------------------
         }
     }
-    for (;i <= ultDatos; i += vecDatos->tamElem)
+    j += vecEspeci->tamElem;    //lo agrege nuevo, se repite el ultimo sino
+
+    while (i <= ultDatos)
     {
         datos =  i;
-    
+        puts("7\n");
+        i += vecDatos->tamElem;
     }
 
-    for (;j <= vecEspeci; j += vecEspeci->tamElem)
+    while (j <= ultEspec)
     {
         especificaciones = j;
         puts("6\n");
         crearArchBinario(especificaciones);
+        j += vecEspeci->tamElem;
     }
 
 
@@ -242,7 +253,6 @@ int Merge(Vector* vecDatos, Vector* vecEspeci)
 
 void crearArchBinario (Especificaciones *espe)
 {
-    puts("4.1\n");
     FILE *pf;
     pf= fopen ("sinprecios.bin","wb");
     if (pf==NULL)
@@ -250,9 +260,8 @@ void crearArchBinario (Especificaciones *espe)
         printf("No se pudo abrir el archivo");
         exit(1);
     }
-    puts("4.2\n");
     fwrite(&espe,1,sizeof(Especificaciones),pf);
-    printf("%7d | %-50s | %s",espe->codProducto, espe->nomProducto, espe->especificaciones);
+    printf("%7d | %s\n",espe->codProducto, espe->nomProducto);
     fclose(pf);
 }
 

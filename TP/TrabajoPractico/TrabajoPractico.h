@@ -69,7 +69,7 @@ typedef struct
 typedef void (*Imprimir)(const void* );
 typedef int (*TxtAMem)(const char* linea, void* reg);
 typedef int (*Cmp)(const void* e1 , const void* e2);
-typedef void (*Accion)(void* , void*);
+
 
 bool vectorCrear(Vector* vector, size_t tamElem);
 void vectorEliminar(Vector* vector);
