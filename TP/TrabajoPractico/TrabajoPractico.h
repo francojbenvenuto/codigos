@@ -17,7 +17,7 @@
 #define ERR_LINEA_LARGA 2
 #define SIN_MEM 3
 
-#define esLetra(c) (((c) >= 'A' && (c) <= 'Z' )||( (c) >= 'a' && (c) <= 'z'))       // estos son macros 
+#define esLetra(c) (((c) >= 'A' && (c) <= 'Z' )||( (c) >= 'a' && (c) <= 'z'))       // estos son macros
 
 #define aMayuscula(c) ((c) >= 'a' && (c) <= 'z' ? (c) - ('a'-'A') : (c))
 
@@ -26,17 +26,17 @@
 
 /*
 
-á = 225
-é = 233
-í = 237
-ó = 243
-ú = 250
+� = 225
+� = 233
+� = 237
+� = 243
+� = 250
 
-Á = 193
-É = 201
-Í = 205 
-Ó = 211
-Ú = 218
+� = 193
+� = 201
+� = 205
+� = 211
+� = 218
 
 */
 
@@ -56,7 +56,7 @@ typedef struct
     size_t tamElem;
 } Vector;
 
-typedef struct 
+typedef struct
 {
     int anio;
     int mes;
@@ -64,34 +64,69 @@ typedef struct
     int codProducto;
     float precio;
     int numForm;
-}DATOS;
- 
-typedef struct 
+}Datos;
+
+typedef struct
 {
     int codProducto;
     char nomProducto[50];
     char especificaciones[250];
 }Especificaciones;
 
+typedef struct
+{
+    int codProducto;
+    float prom[4];
+    int cant[4];
+    char nomProducto[50];
+}STRP5;
+
+typedef struct
+{
+    int mes;
+    int numForm;
+    float suma[4];
+    float cant[4];
+}STRP6_1;
+
+typedef struct
+{
+    int mes;
+    int numForm;
+    float precio;
+}NeneMalo;
+
 
 typedef void (*Imprimir)(const void* );
 typedef int (*TxtAMem)(const char* linea, void* reg);
 typedef int (*Cmp)(const void* e1 , const void* e2);
-
+typedef void (*Accion)(void* , void*);
 
 bool vectorCrear(Vector* vector, size_t tamElem);
+bool vectorOrdBuscar(const Vector* vector, void* elem, Cmp cmp);
 void vectorEliminar(Vector* vector);
 void vectorMostrar(const Vector* vector, Imprimir imprimir);
 int vectorInsertarAlFinal(Vector* vector, const void* elem);
-int Merge(Vector* vecDatos, Vector* vecEspeci);
+bool vectorReInsertarAlFinal(Vector* vector,void* elem,int pos);
+void vectorArchivo(const Vector* vector);
 
+void*** matriz3DCrear(size_t tamElem, int profundidad, int filas, int columnas);
+void matriz3DDestruir(void*** mat3D, int profundidad, int filas);
+void inicializarMatriz(int profundidad, int filas, int columnas, int*** mat);
+void matrizTrimMostrar(int*** mat, int profundidad, int filas, int columnas); 
+
+
+int Merge(Vector* vecDatos, Vector* vecEspeci);
 int descargarAMem(FILE* arch, Vector* vec, size_t tamReg, TxtAMem tipoTxt, Cmp cmp);
 void crearArchBinario (Especificaciones *espe);
+void punto5(void* puntoDatos,void* puntoEsp,Vector* vecProm,int cambio);
 
+int buscarProducto(const int* cod);
 void palabraATitulo(char* pal);
 void eliminarComillas(char* linea);
 void reemplazarPuntoPorComa(char* linea);
 int vectorOrdInsertar(Vector* vector, const void* elem, Cmp cmp);
+
 
 #endif // TRABAJOPRACTICO_H
 

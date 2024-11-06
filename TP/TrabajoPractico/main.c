@@ -8,13 +8,14 @@ int DescargarDatosTxt(const char* linea, void* reg);
 int DescargarEspecificacionesTxt(const char* linea, void* reg);
 int cmpCodProductoDatos(const void* e1, const void* e2);
 int cmpCodProdEspecificaciones(const void* e1, const void* e2);
+int cmpCodProductoP5(const void* e1, const void* e2);
 void mostrarIguales(const void* e1, const void* e2);
 
 int main()
 {
     setlocale(LC_ALL,"Spanish");
     Vector articulosMayorista;
-    vectorCrear(&articulosMayorista, sizeof(DATOS));
+    vectorCrear(&articulosMayorista, sizeof(Datos));
     Vector articulosEspecificaciones;
     vectorCrear(&articulosEspecificaciones, sizeof(Especificaciones));
 
@@ -22,26 +23,29 @@ int main()
     if(!datosArch)
         return ERR_ARCH;
 
-
     FILE* espArch = fopen("ESPECIFICACIONES.txt","r");
     if(!espArch)
         return ERR_ARCH;
 
-    descargarAMem(datosArch,&articulosMayorista, sizeof(DATOS), DescargarDatosTxt, cmpCodProductoDatos);                                    //descarga ordenado
+    descargarAMem(datosArch,&articulosMayorista, sizeof(Datos), DescargarDatosTxt, cmpCodProductoDatos);                                    //descarga ordenado
     descargarAMem(espArch,&articulosEspecificaciones, sizeof(Especificaciones),DescargarEspecificacionesTxt, cmpCodProdEspecificaciones);   //descarga ordenado
     fclose(datosArch);
     fclose(espArch);
 
-
     //Merge(&articulosMayorista, &articulosEspecificaciones);
+    int i = 4;
+    int j = 100;
+    int z = 2;
 
-    vectorMostrar(&articulosMayorista, mostrarDatos);
-    vectorMostrar(&articulosEspecificaciones, mostrarEspecificaciones);
+      int*** matriz = (int***)matriz3DCrear(sizeof(int),z,i,j);
+    inicializarMatriz(z,i,j,matriz);
+    matrizTrimMostrar(matriz,z,i,j);
+    matriz3DDestruir((void***)matriz,z,i);
+    //vectorMostrar(&articulosMayorista, mostrarDatos);
+    //vectorMostrar(&articulosEspecificaciones, mostrarEspecificaciones);
 
-
-    //vectorEliminar(&articulosMayorista);
-    //vectorEliminar(&articulosEspecificaciones);
-
+    vectorEliminar(&articulosMayorista);
+    vectorEliminar(&articulosEspecificaciones);
     return TODO_OK;
 }
 
@@ -49,7 +53,7 @@ int main()
 
 void mostrarDatos(const void* e1)
 {
-    const DATOS* datos1 = e1;
+    const Datos* datos1 = e1;
     printf("%7d | %7d | %4d | %2d | %10.2f | %2d",datos1->codProducto, datos1->codEmpresa, datos1->anio, datos1->mes, datos1->precio, datos1->numForm );
 }
 void mostrarEspecificaciones(const void* e1)
@@ -57,11 +61,10 @@ void mostrarEspecificaciones(const void* e1)
     const Especificaciones* especificaciones1 = e1;
     printf("%7d | %-50s | %s",especificaciones1->codProducto, especificaciones1->nomProducto, especificaciones1->especificaciones);
 }
-
 int cmpCodProductoDatos(const void* e1, const void* e2)
 {
-    const DATOS* datos1 = e1;
-    const DATOS* datos2 = e2;
+    const Datos* datos1 = e1;
+    const Datos* datos2 = e2;
     int resultado = datos1->codProducto - datos2->codProducto;
 
     if(resultado == 0)
@@ -79,18 +82,17 @@ int cmpCodProductoDatos(const void* e1, const void* e2)
                     if (resultado == 0)
                     {
                         mostrarIguales(e1, e2);
-                        puts("ERROR, CODIGO EVACUADO, datos duplicados completamente\n\n\n\n"); 
+                        puts("ERROR, CODIGO EVACUADO, datos duplicados completamente\n\n\n\n");
                         exit(1);
                         return SIN_MEM;
                     }
                 }
             }
         }
-    }  
-    
+    }
+
     return resultado;
 }
-
 int cmpCodProdEspecificaciones(const void* e1, const void* e2)
 {
     const Especificaciones* especificaciones1 = e1;
@@ -99,10 +101,18 @@ int cmpCodProdEspecificaciones(const void* e1, const void* e2)
     return especificaciones1->codProducto - especificaciones2->codProducto;
 }
 
+int cmpCodProductoP5(const void* e1, const void* e2)
+{
+    const Datos* datos = e1;
+    const int* codProd = e2;
+
+    return datos->codProducto - *codProd;
+}
+
 void mostrarIguales(const void* e1, const void* e2)
 {
-    const DATOS* datos1 = e1;
-    const DATOS* datos2 = e2;
+    const Datos* datos1 = e1;
+    const Datos* datos2 = e2;
 
     //mostramos que el codigo de producto es igual en los dos vectores
     printf(" codigo de producto 1 = %d  -  codigo de producto 2 = %d \n", datos1->codProducto, datos2->codProducto);
