@@ -1,4 +1,3 @@
-"0000000"|"á é í ó ú"|" Á É Í Ó Ú"
 "2162203"|"LenTejaS SecaS"|"bOLSA de 400g a 500g. exClUiR lenTejón."
 "5211126"|"GaS en garrafa"|"GaS buTano. Carga de garrafa de 10 kg. A enTregar en domicilio."
 "5211131"|"GaS enVASado en Tubo"|"Cilindro de 45 kg. pueSTo en domicilio."

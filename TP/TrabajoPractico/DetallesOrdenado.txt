@@ -1,0 +1,103 @@
+0|� � � � �
+1121106|Preservativos
+2111203|Pan de viena
+2111204|Rebozador
+2111402|Galletitas dulces envasadas con relleno
+2111403|Galletitas dulces envasadas sin relleno
+2111404|Alfajor
+2111503|Galletitas de agua envasadas
+2111504|Galletitas de harina integral
+2111507|Vainillas
+2112101|Harina de trigo com�n
+2112102|Harina de trigo leudante
+2112201|Harina de ma�z
+2112202|Premezcla para pizza
+2112203|Almid�n de ma�z
+2112301|Arroz blanco simple
+2112302|Arroz blanco doble
+2112402|Copos de ma�z
+2112404|Ma�z pisingallo
+2113101|Fideos secos tipo guisero
+2113102|Fideos secos tipo tallar�n
+2113301|Tapas para empanada
+2113302|Tapas para tarta
+2113402|Prepizza
+2121401|Hamburguesas congeladas
+2123203|Bocaditos de pollo rebozados
+2124212|Medall�n de merluza
+2125104|Salchicha tipo viena
+2125211|Pat� de foie
+2125301|At�n
+2125302|Caballa
+2125303|Sardinas
+2131101|Aceite de girasol
+2131102|Aceite de ma�z
+2131103|Aceite de oliva
+2131201|Aceite mezcla
+2132101|Grasa vacuna
+2132102|Margarina para cocinar
+2143302|Helado envasado
+2143303|Helado individual
+2152102|Nueces
+2152103|Aceitunas
+2152104|Duraznos en conserva
+2152105|Ensalada de frutas en conserva
+2161224|Papas fritas congeladas
+2162101|Tomate entero en conserva
+2162103|Salsa lista de tomate
+2162201|Arvejas en conserva
+2162202|Choclo en conserva
+2162203|Lentejas secas
+2162205|Porotos secos
+2162206|Pur� instant�neo
+2162207|Milanesas de soja
+2171101|Az�car
+2171102|Endulzante
+2171201|Dulce de batata
+2171202|Dulce de membrillo
+2171203|Mermelada
+2171204|Miel
+2172101|Caramelos
+2172102|Chicles
+2172105|Barra de cereal
+2172106|Turr�n de man�
+2172201|Polvo en base a cacao
+2172202|Bocadito de chocolate
+2172203|Chocolate para taza
+2172204|Chocolate
+2181101|Aj� molido
+2181102|Or�gano
+2181103|Piment�n
+2181104|Pimienta
+2181105|Sal fina
+2181106|Sal gruesa
+2182101|Mayonesa
+2182102|Mostaza
+2182103|Ketchup
+2182104|Vinagre
+2183101|Caldo concentrado
+2183102|Sopa concentrada
+2184101|Polvo para gelatina
+2184102|Polvo para flan
+2184103|Polvo para bizcochuelo
+2191103|Papas fritas envasadas
+2211102|Gaseosa base cola en lata
+2231101|Caf� molido
+2231103|Caf� instant�neo
+2232101|Yerba mate
+2232102|Yerba mate en saquitos
+2233101|T� en saquitos
+2233102|Boldo en saquitos
+3222104|Pilas
+3222107|Escarbadientes
+3222109|L�mpara bajo consumo
+5211101|Gas en garrafa
+5211104|Carb�n
+5211126|Gas en garrafa
+5211131|Gas envasado en tubo
+5211132|Gas envasado en tubo
+6411113|Juego de naipes
+6511102|Alimento seco para animales dom�sticos
+7221110|L�pices de colores
+8111102|Encendedor
+

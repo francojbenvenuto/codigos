@@ -10,6 +10,12 @@
 #define DUPLICADO 2
 #define SIN_MEM 3
 
+#define mes2 0
+#define mes3 1
+#define mes4 2
+#define mes5 3
+
+
 typedef struct
 {
     void* vec;
