@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1731017717 source:c:\codigos\parciales\indices\main.c
+	"indice.h"
+
+1731019091 c:\codigos\parciales\indices\indice.h
+	<stdlib.h>
+	<stdio.h>
+
+1731019003 source:c:\codigos\parciales\indices\indices.c
+	"indice.h"
+

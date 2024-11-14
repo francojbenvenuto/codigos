@@ -1,0 +1,90 @@
+   1121106 | Preservativos                                      |     170.05  
+   2111203 | Pan de viena                                       |     111.09  
+   2111204 | Rebozador                                          |     124.90  
+   2111402 | Galletitas dulces envasadas con relleno            |     103.78  
+   2111403 | Galletitas dulces envasadas sin relleno            |      91.87  
+   2111404 | Alfajor                                            |      36.56  
+   2111503 | Galletitas de agua envasadas                       |     130.09  
+   2111504 | Galletitas de harina integral                      |     153.25  
+   2111507 | Vainillas                                          |      55.30  
+   2112101 | Harina de trigo común                              |      78.16  
+   2112102 | Harina de trigo leudante                           |     105.75  
+   2112201 | Harina de maíz                                     |     106.91  
+   2112202 | Premezcla para pizza                               |     133.30  
+   2112203 | Almidón de maíz                                    |     166.17  
+   2112301 | Arroz blanco simple                                |     126.88  
+   2112302 | Arroz blanco doble                                 |     258.46  
+   2112402 | Copos de maíz                                      |     115.47  
+   2113101 | Fideos secos tipo guisero                          |      85.22  
+   2113102 | Fideos secos tipo tallarín                         |     138.32  
+   2113301 | Tapas para empanada                                |     100.65  
+   2113302 | Tapas para tarta                                   |     122.12  
+   2113402 | Prepizza                                           |     123.80  
+   2121401 | Hamburguesas congeladas                            |     334.56  
+   2123203 | Bocaditos de pollo rebozados                       |     438.26  
+   2125104 | Salchicha tipo viena                               |     111.12  
+   2125211 | Paté de foie                                       |      66.94  
+   2125301 | Atún                                               |     239.60  
+   2125302 | Caballa                                            |     307.50  
+   2125303 | Sardinas                                           |     200.82  
+   2131101 | Aceite de girasol                                  |     299.68  
+   2131102 | Aceite de maíz                                     |     378.30  
+   2131103 | Aceite de oliva                                    |     524.68  
+   2131201 | Aceite mezcla                                      |     181.05  
+   2132101 | Grasa vacuna                                       |     141.07  
+   2132102 | Margarina para cocinar                             |     107.85  
+   2143302 | Helado envasado                                    |     562.15  
+   2152103 | Aceitunas                                          |     127.91  
+   2152104 | Duraznos en conserva                               |     205.48  
+   2152105 | Ensalada de frutas en conserva                     |     267.03  
+   2161224 | Papas fritas congeladas                            |     238.45  
+   2162101 | Tomate entero en conserva                          |     113.15  
+   2162103 | Salsa lista de tomate                              |      99.90  
+   2162201 | Arvejas en conserva                                |      57.52  
+   2162202 | Choclo en conserva                                 |     110.35  
+   2162203 | Lentejas secas                                     |     177.06  
+   2162205 | Porotos secos                                      |     151.63  
+   2162206 | Puré instantáneo                                   |     124.13  
+   2171101 | Azúcar                                             |     101.42  
+   2171102 | Endulzante                                         |     202.78  
+   2171201 | Dulce de batata                                    |     202.11  
+   2171202 | Dulce de membrillo                                 |     210.79  
+   2171203 | Mermelada                                          |     165.26  
+   2171204 | Miel                                               |     203.64  
+   2172101 | Caramelos                                          |     382.75  
+   2172102 | Chicles                                            |      57.35  
+   2172105 | Barra de cereal                                    |      78.29  
+   2172201 | Polvo en base a cacao                              |     154.37  
+   2172202 | Bocadito de chocolate                              |      37.30  
+   2172203 | Chocolate para taza                                |     216.81  
+   2172204 | Chocolate                                          |      68.03  
+   2181101 | Ají molido                                         |      61.21  
+   2181102 | Orégano                                            |      82.21  
+   2181103 | Pimentón                                           |      70.76  
+   2181104 | Pimienta                                           |     101.50  
+   2181105 | Sal fina                                           |      46.93  
+   2181106 | Sal gruesa                                         |      68.39  
+   2182101 | Mayonesa                                           |      78.33  
+   2182102 | Mostaza                                            |      98.82  
+   2182103 | Ketchup                                            |     127.11  
+   2182104 | Vinagre                                            |      98.41  
+   2183101 | Caldo concentrado                                  |      79.98  
+   2183102 | Sopa concentrada                                   |     113.41  
+   2184101 | Polvo para gelatina                                |      82.94  
+   2184102 | Polvo para flan                                    |      69.34  
+   2184103 | Polvo para bizcochuelo                             |     190.06  
+   2191103 | Papas fritas envasadas                             |     111.04  
+   2231101 | Café molido                                        |     318.97  
+   2231103 | Café instantáneo                                   |     486.04  
+   2232101 | Yerba mate                                         |     282.33  
+   2232102 | Yerba mate en saquitos                             |     100.24  
+   2233101 | Té en saquitos                                     |      69.40  
+   2233102 | Boldo en saquitos                                  |     124.07  
+   3222104 | Pilas                                              |     280.52  
+   3222107 | Escarbadientes                                     |      49.02  
+   3222109 | Lámpara bajo consumo                               |     206.71  
+   5211101 | Gas en garrafa                                     |     824.84  
+   5211104 | Carbón                                             |     169.20  
+   6411113 | Juego de naipes                                    |     152.63  
+   6511102 | Alimento seco para animales domésticos             |     324.20  
+   8111102 | Encendedor                                         |      45.13  

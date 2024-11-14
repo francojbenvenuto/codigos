@@ -1,49 +1,76 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "TrabajoPractico.h"
+#include "Matrices.h"
 
 void mostrarDatos(const void* e1);
 void mostrarEspecificaciones(const void* e1);
-int DescargarDatosTxt(const char* linea, void* reg);
-int DescargarEspecificacionesTxt(const char* linea, void* reg);
+int DescargarDatosTxt(const char* linea, void* reg, Promiedo** matriz);
+int DescargarEspecificacionesTxt(const char* linea, void* reg,Promiedo** matriz);
 int cmpCodProductoDatos(const void* e1, const void* e2);
 int cmpCodProdEspecificaciones(const void* e1, const void* e2);
-int cmpCodProductoP5(const void* e1, const void* e2);
+
 void mostrarIguales(const void* e1, const void* e2);
+void iniMatrizProm(void** Matriz, int i, int j);
+void iniMatrizFloat(void** Matriz, int i, int j);
+void imprimirMatrizFloat(const void** matriz, int i, int j);
+void imprimirMatrizProm(const void** matriz, int i, int j);
+
+
+
 
 int main()
 {
     setlocale(LC_ALL,"Spanish");
+    //---------------------------------VECTORES---------------------------------------------
     Vector articulosMayorista;
     vectorCrear(&articulosMayorista, sizeof(Datos));
     Vector articulosEspecificaciones;
     vectorCrear(&articulosEspecificaciones, sizeof(Especificaciones));
 
+    //-------------------------------MATRICES--------------------------------------------
+    Promiedo** promedioM = (Promiedo**) matrizCrear(sizeof(Promiedo),FORMS,MESES);
+    inicializarMatriz(FORMS,MESES,(void**)promedioM,iniMatrizProm);
+    float** sumatoriaVarianzaM = (float**) matrizCrear(sizeof(float),FORMS,MESES);
+    inicializarMatriz(FORMS,MESES,(void**)sumatoriaVarianzaM,iniMatrizFloat);
+
     FILE* datosArch = fopen("DATOS.txt","r");
-    if(!datosArch)
-        return ERR_ARCH;
-
     FILE* espArch = fopen("ESPECIFICACIONES.txt","r");
-    if(!espArch)
+    if(!datosArch || !espArch)
         return ERR_ARCH;
 
-    descargarAMem(datosArch,&articulosMayorista, sizeof(Datos), DescargarDatosTxt, cmpCodProductoDatos);                                    //descarga ordenado
-    descargarAMem(espArch,&articulosEspecificaciones, sizeof(Especificaciones),DescargarEspecificacionesTxt, cmpCodProdEspecificaciones);   //descarga ordenado
+    if (descargarAMem(datosArch,&articulosMayorista, sizeof(Datos), DescargarDatosTxt, cmpCodProductoDatos, promedioM) != TODO_OK)                     //descarga ordenado
+    {
+        printf("error Datos \n");
+        exit(1);
+    }
+
+    if (descargarAMem(espArch,&articulosEspecificaciones, sizeof(Especificaciones),DescargarEspecificacionesTxt, cmpCodProdEspecificaciones, promedioM) != TODO_OK)    //descarga ordenado
+    {
+        printf("error Especificaciones \n");
+        exit(1);
+    }
+
     fclose(datosArch);
     fclose(espArch);
 
-    //Merge(&articulosMayorista, &articulosEspecificaciones);
-    int i = 4;
-    int j = 100;
-    int z = 2;
+    if (Merge(&articulosMayorista, &articulosEspecificaciones,promedioM,sumatoriaVarianzaM) != TODO_OK)
+    {
+        printf("error merge \n");
+        exit(1);
+    }
 
-      int*** matriz = (int***)matriz3DCrear(sizeof(int),z,i,j);
-    inicializarMatriz(z,i,j,matriz);
-    matrizTrimMostrar(matriz,z,i,j);
-    matriz3DDestruir((void***)matriz,z,i);
-    //vectorMostrar(&articulosMayorista, mostrarDatos);
-    //vectorMostrar(&articulosEspecificaciones, mostrarEspecificaciones);
+    setlocale(LC_ALL,"English");
+    cuentaVarianza(promedioM,sumatoriaVarianzaM);
+    matrizArchivo(sumatoriaVarianzaM);
 
+//    matrizMostrar(promedioM,FORMS,MESES,imprimirMatrizProm);
+//    matrizMostrar(sumatoriaVarianzaM,FORMS,MESES,imprimirMatrizFloat);
+//    vectorMostrar(&articulosMayorista, mostrarDatos);
+//    vectorMostrar(&articulosEspecificaciones, mostrarEspecificaciones);
+
+    matrizDestruir((void**)promedioM,FORMS);
+    matrizDestruir((void**)sumatoriaVarianzaM,FORMS);
     vectorEliminar(&articulosMayorista);
     vectorEliminar(&articulosEspecificaciones);
     return TODO_OK;
@@ -100,15 +127,6 @@ int cmpCodProdEspecificaciones(const void* e1, const void* e2)
 
     return especificaciones1->codProducto - especificaciones2->codProducto;
 }
-
-int cmpCodProductoP5(const void* e1, const void* e2)
-{
-    const Datos* datos = e1;
-    const int* codProd = e2;
-
-    return datos->codProducto - *codProd;
-}
-
 void mostrarIguales(const void* e1, const void* e2)
 {
     const Datos* datos1 = e1;
@@ -123,4 +141,27 @@ void mostrarIguales(const void* e1, const void* e2)
     // resto de datos de ambos vectores
     printf(" anio - mes  - precio  - numForm  del 1 : %d  -  %d  -  %10.2f  -  %d \n", datos1->anio, datos1->mes, datos1->precio, datos1->numForm);
     printf(" anio - mes  - precio  - numForm  del 2 : %d  -  %d  -  %10.2f  -  %d \n", datos2->anio, datos2->mes, datos2->precio, datos2->numForm);
+}
+void iniMatrizProm(void** Matriz, int i, int j)
+{
+    Promiedo** matriz = (Promiedo**) Matriz;
+        matriz[i][j].cant = 0;
+        matriz[i][j].sumatoria = 0;
+}
+void iniMatrizFloat(void** Matriz, int i, int j)
+{
+    float** matriz = (float**)Matriz;
+        matriz[i][j] = 0;
+}
+void imprimirMatrizProm(const void** matriz, int i, int j)
+{
+    Promiedo** matriz1 = (Promiedo**)matriz;
+    printf("SUMATORIA : %5.02f\t", matriz1[i][j].sumatoria);
+    printf("CANT : %5d\t", matriz1[i][j].cant);
+    putchar('\n');
+}
+void imprimirMatrizFloat(const void** matriz, int i, int j)
+{
+    float** matriz1 = (float**)matriz;
+    printf("SUMATORIA : %10.03f \t", matriz1[i][j]);
 }

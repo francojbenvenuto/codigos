@@ -1,17 +1,66 @@
 # depslib dependency file v1.0
-1730905665 source:c:\codigos\tp\trabajopractico\main.c
+1731004674 source:e:\materias\tdp\tps\tp-bbc\programa\main.c
 	<stdio.h>
 	<stdlib.h>
 	"TrabajoPractico.h"
+	"Matrices.h"
 
-1730905032 c:\codigos\tp\trabajopractico\trabajopractico.h
+1731004085 e:\materias\tdp\tps\tp-bbc\programa\trabajopractico.h
 	<stdbool.h>
 	<stddef.h>
 	<string.h>
 	<stdio.h>
 	<stdlib.h>
 	<locale.h>
+	<math.h>
+	"Matrices.h"
 
-1730905744 source:c:\codigos\tp\trabajopractico\trabajopractico.c
+1730999130 source:e:\materias\tdp\tps\tp-bbc\programa\trabajopractico.c
 	"TrabajoPractico.h"
+	"Matrices.h"
+
+1730993460 source:e:\materias\tdp\tps\tp-bbc\programa\matrices.c
+	"Matrices.h"
+	"TrabajoPractico.h"
+
+1730956635 e:\materias\tdp\tps\tp-bbc\programa\matrices.h
+	"TrabajoPractico.h"
+
+1730956635 source:e:\materias\tdp\tps\tp-bbc\programa\vectores.c
+	"TrabajoPractico.h"
+	"Matrices.h"
+
+1730948430 e:\materias\tdp\tps\tp-bbc\programa\vectores.h
+	"TrabajoPractico.h"
+
+1731038742 source:c:\codigos\tp\trabajopractico\main.c
+	<stdio.h>
+	<stdlib.h>
+	"TrabajoPractico.h"
+	"Matrices.h"
+
+1731005654 c:\codigos\tp\trabajopractico\trabajopractico.h
+	<stdbool.h>
+	<stddef.h>
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<math.h>
+	"Matrices.h"
+
+1731005654 c:\codigos\tp\trabajopractico\matrices.h
+	"TrabajoPractico.h"
+
+1731005654 source:c:\codigos\tp\trabajopractico\matrices.c
+	"Matrices.h"
+	"TrabajoPractico.h"
+
+1731038875 source:c:\codigos\tp\trabajopractico\trabajopractico.c
+	"TrabajoPractico.h"
+	"Matrices.h"
+
+1731005654 source:c:\codigos\tp\trabajopractico\vectores.c
+	"TrabajoPractico.h"
+	"Matrices.h"
 

@@ -7,11 +7,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+#include <math.h>
+#include "Matrices.h"
 
 #define TAM_ESP 250
 #define TAM_NOMBRE 50
 #define TODO_OK 0
 #define TAM_LINEA 501
+#define FORMS 2
+#define MESES 4
+#define FORM_19 19
+#define FORM_21 21
 
 #define ERR_ARCH 1
 #define ERR_LINEA_LARGA 2
@@ -24,28 +30,6 @@
 #define aMinuscula(c) ((c) >= 'A' && (c) <= 'Z' ? (c) + ('a'-'A') :(c))
 
 
-/*
-
-� = 225
-� = 233
-� = 237
-� = 243
-� = 250
-
-� = 193
-� = 201
-� = 205
-� = 211
-� = 218
-
-*/
-
-#define TIENE_ACENTO(c) ((c) == 225 || (c) == 233 || (c) == 237 || (c) == 243 || (c) == 250 || \
-                          (c) == 193 || (c) == 201 || (c) == 205 || (c) == 211 || (c) == 218)
-
-#define Acento_MINUSCULA(c) ((c) == 193 || (c) == 201 || (c) == 205 || (c) == 211 || (c) == 218? (c) + 32 : (c))
-
-#define Acento_MAYUSCULA(c) ((c) == 225 || (c) == 233 || (c) == 237 || (c) == 243 || (c) == 250 ? (c) - 32 : (c))
 
 
 typedef struct
@@ -55,6 +39,20 @@ typedef struct
     int cap;
     size_t tamElem;
 } Vector;
+
+typedef struct
+{
+    float sumatoria;
+    int cant;
+}Promiedo;
+
+typedef struct
+{
+    int codProd;
+    double multiplicacion;
+    int cant;
+    char nomProducto[50];
+}PromedioGeometrico;
 
 typedef struct
 {
@@ -81,51 +79,41 @@ typedef struct
     char nomProducto[50];
 }STRP5;
 
-typedef struct
-{
-    int mes;
-    int numForm;
-    float suma[4];
-    float cant[4];
-}STRP6_1;
-
-typedef struct
-{
-    int mes;
-    int numForm;
-    float precio;
-}NeneMalo;
 
 
 typedef void (*Imprimir)(const void* );
-typedef int (*TxtAMem)(const char* linea, void* reg);
+typedef int (*TxtAMem)(const char* linea, void* reg, Promiedo** matriz);
 typedef int (*Cmp)(const void* e1 , const void* e2);
 typedef void (*Accion)(void* , void*);
+typedef void (*Estructura)(FILE* arch, void* estructura);
 
 bool vectorCrear(Vector* vector, size_t tamElem);
-bool vectorOrdBuscar(const Vector* vector, void* elem, Cmp cmp);
 void vectorEliminar(Vector* vector);
 void vectorMostrar(const Vector* vector, Imprimir imprimir);
 int vectorInsertarAlFinal(Vector* vector, const void* elem);
 bool vectorReInsertarAlFinal(Vector* vector,void* elem,int pos);
 void vectorArchivo(const Vector* vector);
+int vectorOrdInsertar(Vector* vector, const void* elem, Cmp cmp);
 
-void*** matriz3DCrear(size_t tamElem, int profundidad, int filas, int columnas);
-void matriz3DDestruir(void*** mat3D, int profundidad, int filas);
-void inicializarMatriz(int profundidad, int filas, int columnas, int*** mat);
-void matrizTrimMostrar(int*** mat, int profundidad, int filas, int columnas); 
+int Merge(Vector* vecDatos, Vector* vecEspeci, Promiedo** matrizProm, float** matrizVarianza);
 
-
-int Merge(Vector* vecDatos, Vector* vecEspeci);
-int descargarAMem(FILE* arch, Vector* vec, size_t tamReg, TxtAMem tipoTxt, Cmp cmp);
+int descargarAMem(FILE* arch, Vector* vec, size_t tamReg, TxtAMem tipoTxt, Cmp cmp, Promiedo** matriz);
 void crearArchBinario (Especificaciones *espe);
 void punto5(void* puntoDatos,void* puntoEsp,Vector* vecProm,int cambio);
 
-int buscarProducto(const int* cod);
+int selectorProducto(const int* cod);
+int selectorMeses(const int* Mes);
+int selectorForm(const int* form);
 void palabraATitulo(char* pal);
 void eliminarComillas(char* linea);
 void reemplazarPuntoPorComa(char* linea);
-int vectorOrdInsertar(Vector* vector, const void* elem, Cmp cmp);
+
+void sumatoriaVarianza(Datos* dato, Promiedo** matrizProm, float** matrizResultado);
+void cuentaVarianza(Promiedo** matrizProm, float** matrizResultado);
+void sumatoriaMatrizProm (Promiedo** matriz,void* reg);
+
+void sumatoriaGeometrica(void* punteroProm,void* punteroDatos, void* punteroEsp);
+void EstructuraArchivo(FILE* pf,void* elem,Estructura estructura);
 
 
 #endif // TRABAJOPRACTICO_H

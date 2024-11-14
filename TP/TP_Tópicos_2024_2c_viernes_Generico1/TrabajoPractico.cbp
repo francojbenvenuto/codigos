@@ -34,7 +34,6 @@
 		<Unit filename="Matrices.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="Matrices.h" />
 		<Unit filename="TrabajoPractico.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -42,7 +41,6 @@
 		<Unit filename="Vectores.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="Vectores.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

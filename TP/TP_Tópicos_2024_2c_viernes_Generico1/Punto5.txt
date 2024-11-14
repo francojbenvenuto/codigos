@@ -3,22 +3,18 @@
      2 | 2113302 | 118.61 |    13 | Tapas para tarta                                   
      2 | 2162201 |  56.25 |    12 | Arvejas en conserva                                
      2 | 2232102 |  93.21 |    12 | Yerba mate en saquitos                             
-
      3 | 2111203 | 114.02 |     8 | Pan de viena                                       
      3 | 2113301 |  95.39 |    11 | Tapas para empanada                                
      3 | 2113302 | 112.88 |    10 | Tapas para tarta                                   
      3 | 2162201 |  56.61 |    11 | Arvejas en conserva                                
      3 | 2232102 |  98.98 |    10 | Yerba mate en saquitos                             
-
      4 | 2111203 | 111.86 |    15 | Pan de viena                                       
      4 | 2113301 | 105.35 |    17 | Tapas para empanada                                
      4 | 2113302 | 128.83 |    17 | Tapas para tarta                                   
      4 | 2162201 |  59.67 |    17 | Arvejas en conserva                                
      4 | 2232102 | 104.70 |    17 | Yerba mate en saquitos                             
-
      5 | 2111203 | 117.42 |    11 | Pan de viena                                       
      5 | 2113301 | 110.33 |    14 | Tapas para empanada                                
      5 | 2113302 | 138.95 |    15 | Tapas para tarta                                   
      5 | 2162201 |  59.05 |    15 | Arvejas en conserva                                
      5 | 2232102 | 111.81 |    12 | Yerba mate en saquitos                             
-
