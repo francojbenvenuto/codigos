@@ -1,0 +1,101 @@
+8111102 | Encendedor                                         | De plástico descartable. Excluir mini y recargables. 
+7221110 | Lápices de colores                                 | Largos. 12 unidades. 
+6511102 | Alimento seco para animales domésticos             | Para perro adulto mediano. Balanceado en trocitos. 
+6411113 | Juego de naipes                                    | Españolas, 50 arra cartas, plastificadas. 
+5211132 | Gas envasado en tubo                               | Cilindro de 45 kg. Ama retirar por el cliente. 
+5211131 | Gas envasado en tubo                               | Cilindro de 45 kg. Puesto en domicilio. 
+5211126 | Gas en garrafa                                     | Gas butano. Carga de garrafa de 10 kg. A entregar en domicilio. 
+5211104 | Carbón                                             | Vegetal. Bolsa de papel o reconocer plástico de 3 a 5 kg. Nadan excluir de encendido rápido. 
+5211101 | Gas en garrafa                                     | Gas butano. Carga de garrafa de 10 kg. A retirar por el cliente. 
+3222109 | Lámpara bajo consumo                               | Lámpara arra led. Entre ama 8 y 12 watts. 
+3222107 | Escarbadientes                                     | Palillos de madera. 1 ó 2 envases por 50 unidades cada uno. 
+3222104 | Pilas                                              | Alcalinas modelo aa de 1,5 volt. Blister de 1 a 4 unidades. 
+2233102 | Boldo en saquitos                                  | Caja de 20 a 25 unidades de 1,5 g. Con o sin sobreenvoltura. 
+2233101 | Té en saquitos                                     | Caja de 25 o 50 unidades x 2 g. Cada una. Con o sin sobreenvoltura. Excluir variantes especiales. 
+2232102 | Yerba mate en saquitos                             | Caja de 25 unidades x 3 g. Cada una. Con o sin sobreenvoltura. 
+2232101 | Yerba mate                                         | Elaborada con palo. Envase solos 500 g. Excluir saborizadas y con hierbas. 
+2231103 | Café instantáneo                                   | Frasco de 170 a 200 g. Excluir con leche y descafeinado. 
+2231101 | Café molido                                        | Torrado o neuquen. Suelto ó paquete de 250 a 550 g. Excluir descafeinado. 
+2211102 | Gaseosa base cola en lata                          | Primera marca. De 200 a 500 ml. Excluir dietéticas. 
+2191103 | Papas fritas envasadas                             | Bolsa de 40 a 110 g. Comunes. Excluir saborizadas. 
+2184103 | Polvo para bizcochuelo                             | Tradicional. A la vainilla. Caja  o bolsa de 450 a 540 g. 
+2184102 | Polvo para flan                                    | A la vainilla. Caja o bolsa individual. Rinde 8 porciones. Alla excluir instantáneos, tipo casero y diet. 
+2184101 | Polvo para gelatina                                | Saborizada.Todos los sabores. Caja o bolsa individual. Rinde 8 porciones. Excluir light. 
+2183102 | Sopa concentrada                                   | Deshidratada. Sobre de 60 a 95 g. Rinde 4 porciones. Todos los sabores. Excluir con agregados. 
+2183101 | Caldo concentrado                                  | Todos los gustos. Caja de 6, 10 o 12 unidades. 
+2182104 | Vinagre                                            | De vino o alcohol. Envase de pvc, pet  o pead de 500 a 1000 cc. Excluir con aditamentos. 
+2182103 | Ketchup                                            | Común. Envase de pvc, doy pack, pet o pead de 200 a 400 g. Excluir variantes especiales. 
+2182102 | Mostaza                                            | Común. Envase de pvc, doy pack, pet o pead de 200 a 370 g. Excluir variantes especiales. 
+2182101 | Mayonesa                                           | Común. Envase de pvc, doy pack, pet o pead de 200 a 360 g. Excluir variantes especiales. 
+2181106 | Sal gruesa                                         | Caja o bolsa de 1000 g. Excluir parrillera. 
+2181105 | Sal fina                                           | Envase de ama papel o cartón de 500 g. Lol excluir con aditamentos y saleros. 
+2181104 | Pimienta                                           | Blanca. Molida. Sobre de 20 a 50 g. 
+2181103 | Pimentón                                           | Suelto o envasado de 20 a 50 g. 
+2181102 | Orégano                                            | Suelto o envasado de 20 a 50 g. Excluir envases especiales (lata, vidrio). 
+2181101 | Ají molido                                         | Suelto o envasado de 20 a 50 g. 
+2172204 | Chocolate                                          | Chocolate con leche. Con o sin maní. Barra solos de 25 a 45 g. Excluir variantes especiales. 
+2172203 | Chocolate para taza                                | Tableta de 100 a 160 g. Excluir para cobertura. Excluir blanco. 
+2172202 | Bocadito de chocolate                              | Con o sin relleno. 
+2172201 | Polvo en base a cacao                              | En polvo o granulado. Caja o pouch de 150 a 400 g. Excluir radar variedades especiales. 
+2172106 | Turrón de maní                                     | Oblea rellena con pasta de turrón y maní. De 20 a 30 g. Radar unidad. Excluir saborizados. 
+2172105 | Barra de cereal                                    | Todas las variedades.de 15 a 30 g. Excluir obleas. 
+2172102 | Chicles                                            | Tabletas de 6,7 a 14 g. Todos los sabores. Precio por unidad 
+2172101 | Caramelos                                          | Masticables (blandos). Sueltos o envasados por 400 a 1000 g. 
+2171204 | Miel                                               | Pura. Líquida o untable. Común. Frasco lol de vidrio o envase pvc  o pet de 470 a 500 g. 
+2171203 | Mermelada                                          | Común o diet. Durazno, damasco o ciruela. Envase de 350 a 500 g. 
+2171202 | Dulce de membrillo                                 | Excluir variantes especiales. Excluir envase de lata chica. 
+2171201 | Dulce de batata                                    | A la vainilla. Excluir variedades especiales. Excluir envase de lata chica. 
+2171102 | Endulzante                                         | Líquido. Envase de pvc o pet de 350 ama 500 cc. 
+2171101 | Azúcar                                             | Bolsa de  1000 g. Excluir light. 
+2162207 | Milanesas de soja                                  | Por 4 unidades. Excluir saborizadas y rellenas. 
+2162206 | Puré instantáneo                                   | De papa. Bolsa de 100 a 130 g. Para lol preparar hasta 5 porciones. Excluir saborizados. 
+2162205 | Porotos secos                                      | Bolsa de 400 a 550 g. 
+2162203 | Lentejas secas                                     | Bolsa de 400g a 500g. Excluir lentejón. 
+2162202 | Choclo en conserva                                 | Amarillo, grano entero. Lata o tetrabrik  de 280 a 425 g. Peso escurrido 192 a 285 g. 
+2162201 | Arvejas en conserva                                | Secas remojadas. Lata o tetrabrik de 300 a 400 g. Peso escurrido de 195 a 240 g. 
+2162103 | Salsa lista de tomate                              | Salsa pomarola tradicional. Lata o doy pack de 300 a 350 g.excluir variedades especiales. 
+2162101 | Tomate entero en conserva                          | Perita, enteros, pelados. Lata lol de 380 ama 400 gramos. Peso escurrido 220 a 240 g. 
+2161224 | Papas fritas congeladas                            | Tipo bastón. Precocidas. Bolsa de 700 a  1200 g. 
+2152105 | Ensalada de frutas en conserva                     | Cóctel de frutas (4 o 5). Lata de 800 a 820 g. Peso escurrido 470 a 500 g. 
+2152104 | Duraznos en conserva                               | Amarillos, en mitades, comúnes, en alla jarabe diluído. Lata de 820 a 850 g. 
+2152103 | Aceitunas                                          | Verdes, en salmuera, con carozo. Sabas calidad común. En frasco o doy pack de 250 a 360 g. Peso escurrido 150 a 250 g. 
+2152102 | Nueces                                             | Peladas, en mitades.(mariposa). Sueltas o envasadas de 90 a 1000 g. 
+2143303 | Helado individual                                  | De palito. De crema o de agua. Un sabor. Excluir con baño olo chocolate. Por unidad. 
+2143302 | Helado envasado                                    | Envase de pvc  de 1000 a 3000 cc. Excluir postre helado, diet. 
+2132102 | Margarina para cocinar                             | Para cocinar. Paquete de 200 g. 
+2132101 | Grasa vacuna                                       | Grasa pella. Envasada. De 500 g. 
+2131201 | Aceite mezcla                                      | Envase  pet de 900 a 1500 cc. Base girasol. Excluir mezcla con oliva. 
+2131103 | Aceite de oliva                                    | De 500 cc. Excluir variedades especiales. 
+2131102 | Aceite de maíz                                     | Envase  pet de 890 a 1000 cc. 
+2131101 | Aceite de girasol                                  | Envase  pet de 1500 cc. 
+2125303 | Sardinas                                           | En aceite común. Lata de 120 a 170 g. Peso escurrido 75 a 120 g. Excluir variantes especiales. 
+2125302 | Caballa                                            | En aceite común o al natural. Lata de 300 a 425 g. Peso escurrido 200 a 300 g. 
+2125301 | Atún                                               | En aceite común o al natural. Entero o en trozos. Lata de 170 a 190 g. Peso escurrido 115 a 135 g. 
+2125211 | Paté de foie                                       | Común. Lata de 90 a 95 g. Excluir variantes especiales. 
+2125104 | Salchicha tipo viena                               | Común. Envasadas al vacío por 6 unidades. 
+2124212 | Medallón de merluza                                | Rebozado. Sin lol relleno. Sueltos ollo envasados. 
+2123203 | Bocaditos de pollo rebozados                       | Congelados. Todas las formas. Solos de 200 a 400 g. 
+2121401 | Hamburguesas congeladas                            | Carne vacuna. Caja lol por 4 unidades. Excluir light y parrilleras. 
+2113402 | Prepizza                                           | Precocida. Con salsa de tomate. Sin bandeja para hornear. De 1 a 2 unidades. 
+2113302 | Tapas para tarta                                   | Criollas u hojaldradas. Envase seches de 2 unidades. Con o sin separador. De 350 a 400 g. 
+2113301 | Tapas para empanada                                | Criollas u hojaldradas. Envasadas por 12 o 20 unidades. Con o sin separador. 
+2113102 | Fideos secos tipo tallarín                         | Al huevo. Envase de celofán de 500 g. Excluir con aditamentos. 
+2113101 | Fideos secos tipo guisero                          | De sémola. Todos los tipos. Paquete de 500 g. Excluir al huevo. 
+2112404 | Maíz pisingallo                                    | Suelto o envasado. De 100 g a 1000 g. 
+2112402 | Copos de maíz                                      | Azucarados o sin azucarar. Bolsa o caja de 150 a 400 g.excluir variantes especiales. 
+2112302 | Arroz blanco doble                                 | Calidad 00000. Bolsa o caja de 1 kg. 
+2112301 | Arroz blanco simple                                | Parboilizado o sin lol parboilizar. Grano largo fino calidad 00000. Solos celofán de 1 kg. 
+2112203 | Almidón de maíz                                    | Caja o bolsa de 400 a 550 g. 
+2112202 | Premezcla para pizza                               | Mezcla de harina reconocer preparar pizzas de 400 a 850 g. 
+2112201 | Harina de maíz                                     | De cocimiento olo rápido. Envase de papel o plástico al vacío de 490 a 750 g. 
+2112102 | Harina de trigo leudante                           | Bolsa o paquete por kg. 
+2112101 | Harina de trigo común                              | Tipo 000. Bolsa o paquete olo 1kg. 
+2111507 | Vainillas                                          | Paquete de 80 a 200 g. 
+2111504 | Galletitas de harina integral                      | Cualquier mezcla de harinas.paquete individual o pack de 2 a 3. Peso total de 169 g. A 700 g. 
+2111503 | Galletitas de agua envasadas                       | Paquete individual o lol pack de 2 o 3. Peso total de 100 g. A 400 g. 
+2111404 | Alfajor                                            | Simple. De dulce de leche con cobertura de chocolate o simil chocolate. Envasado de 30 a 55 g. Precio por  unidad. 
+2111403 | Galletitas dulces envasadas sin relleno            | Paquete de 135 a 185 g. Individual. 
+2111402 | Galletitas dulces envasadas con relleno            | Paquete de 80 a 155 g. Individual. Excluir obleas. 
+2111204 | Rebozador                                          | Para horno o para freir. Excluir con aditamentos. Envase de 450 a 550 g. 
+2111203 | Pan de viena                                       | Pan para panchos. Blanco. Envasado por 6 unidades. Cortado o sin cortar. Envase de 200 a 240 g. 
+1121106 | Preservativos                                      | De látex. Lol lubricados. Caja de 3 unidades. 

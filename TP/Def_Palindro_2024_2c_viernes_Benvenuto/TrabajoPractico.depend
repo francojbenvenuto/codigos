@@ -1,0 +1,124 @@
+# depslib dependency file v1.0
+1731272569 source:e:\materias\tdp\tps\tp-bbc\programa\main.c
+	<stdio.h>
+	<stdlib.h>
+	"TrabajoPractico.h"
+
+1731270394 e:\materias\tdp\tps\tp-bbc\programa\trabajopractico.h
+	<stdbool.h>
+	<stddef.h>
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<math.h>
+
+1731272220 source:e:\materias\tdp\tps\tp-bbc\programa\trabajopractico.c
+	"TrabajoPractico.h"
+
+1731272560 source:e:\materias\tdp\tps\tp-bbc\programa\matrices.c
+	"TrabajoPractico.h"
+
+1731263863 e:\materias\tdp\tps\tp-bbc\programa\matrices.h
+	"TrabajoPractico.h"
+	"Vectores.h"
+
+1731270394 source:e:\materias\tdp\tps\tp-bbc\programa\vectores.c
+	"TrabajoPractico.h"
+
+1731263859 e:\materias\tdp\tps\tp-bbc\programa\vectores.h
+	"TrabajoPractico.h"
+	"Matrices.h"
+
+1731272569 source:e:\materias\tdp\tp terminado\tp_tópicos_2024_2c_viernes_generico1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"TrabajoPractico.h"
+
+1731270394 e:\materias\tdp\tp terminado\tp_tópicos_2024_2c_viernes_generico1\trabajopractico.h
+	<stdbool.h>
+	<stddef.h>
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<math.h>
+
+1731272718 source:e:\materias\tdp\tp terminado\tp_tópicos_2024_2c_viernes_generico1\matrices.c
+	"TrabajoPractico.h"
+
+1731272220 source:e:\materias\tdp\tp terminado\tp_tópicos_2024_2c_viernes_generico1\trabajopractico.c
+	"TrabajoPractico.h"
+
+1731270394 source:e:\materias\tdp\tp terminado\tp_tópicos_2024_2c_viernes_generico1\vectores.c
+	"TrabajoPractico.h"
+
+1731684183 source:c:\users\laboratorios\desktop\tp battistelli\tp_tópicos_2024_2c_viernes_generico1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"TrabajoPractico.h"
+
+1731683559 c:\users\laboratorios\desktop\tp battistelli\tp_tópicos_2024_2c_viernes_generico1\trabajopractico.h
+	<stdbool.h>
+	<stddef.h>
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<math.h>
+
+1731669908 source:c:\users\laboratorios\desktop\tp battistelli\tp_tópicos_2024_2c_viernes_generico1\matrices.c
+	"TrabajoPractico.h"
+
+1731669908 source:c:\users\laboratorios\desktop\tp battistelli\tp_tópicos_2024_2c_viernes_generico1\vectores.c
+	"TrabajoPractico.h"
+
+1731684250 source:c:\users\laboratorios\desktop\tp battistelli\tp_tópicos_2024_2c_viernes_generico1\trabajopractico.c
+	"TrabajoPractico.h"
+
+1731696039 source:e:\materias\tdp\tps\tp_tópicos_2024_2c_viernes_generico1\matrices.c
+	"TrabajoPractico.h"
+
+1731962780 e:\materias\tdp\tps\tp_tópicos_2024_2c_viernes_generico1\trabajopractico.h
+	<stdbool.h>
+	<stddef.h>
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<math.h>
+
+1731974744 source:e:\materias\tdp\tps\tp_tópicos_2024_2c_viernes_generico1\trabajopractico.c
+	"TrabajoPractico.h"
+
+1731963583 source:e:\materias\tdp\tps\tp_tópicos_2024_2c_viernes_generico1\vectores.c
+	"TrabajoPractico.h"
+
+1731706081 source:e:\materias\tdp\tps\tp_tópicos_2024_2c_viernes_generico1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"TrabajoPractico.h"
+
+1731706081 source:c:\users\franc\downloads\tp_tópicos_2024_2c_viernes_generico1\tp_tópicos_2024_2c_viernes_generico1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"TrabajoPractico.h"
+
+1732041864 c:\users\franc\downloads\tp_tópicos_2024_2c_viernes_generico1\tp_tópicos_2024_2c_viernes_generico1\trabajopractico.h
+	<stdbool.h>
+	<stddef.h>
+	<string.h>
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<math.h>
+
+1731696039 source:c:\users\franc\downloads\tp_tópicos_2024_2c_viernes_generico1\tp_tópicos_2024_2c_viernes_generico1\matrices.c
+	"TrabajoPractico.h"
+
+1732041066 source:c:\users\franc\downloads\tp_tópicos_2024_2c_viernes_generico1\tp_tópicos_2024_2c_viernes_generico1\trabajopractico.c
+	"TrabajoPractico.h"
+
+1731963583 source:c:\users\franc\downloads\tp_tópicos_2024_2c_viernes_generico1\tp_tópicos_2024_2c_viernes_generico1\vectores.c
+	"TrabajoPractico.h"
+
